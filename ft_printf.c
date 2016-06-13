@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:00:48 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/10 17:40:08 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/13 11:44:50 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,23 @@
 int		ft_retrieve_precision(const char *format, t_arg *arg, int i)
 {
 	int j;
+	char *tmp;
 
+	tmp = (char *)malloc(sizeof(char) * ft_strlen(format));
 	j = 0;
-	while (format[i] == '.' || ft_isdigit(format[i]) == 1)
+	if (format[i] == '.')
 	{
-		arg->precision[j] = format[i];
 		i++;
-		j++;
+		while (ft_isdigit(format[i]) == 1)
+		{
+			tmp[j] = format[i];
+			i++;
+			j++;
+		}
+		tmp[j] = '\0';
 	}
+	arg->precision = ft_atoi(tmp);
+	free(tmp);
 	return (i);
 }
 
@@ -38,17 +47,19 @@ int		ft_check_format(const char *format, t_arg *arg)
 	while (format[i])
 	{
 		j = 0;
-		if (format[i] == '%')
+		if (format[i++] == '%')
 		{
-			i++;
+			i = ft_retrieve_flags(format, arg, i);
+			i = ft_retrieve_width(format, arg, i);
 			i = ft_retrieve_precision(format, arg, i);
+			i = ft_retrieve_lenght(format, arg, i);
 			arg->type = format[i];
 			arg->next = (t_arg *)malloc(sizeof(t_arg));
-			arg->next->precision = (char *)malloc(sizeof(char) * 10);
+			arg->next->flags = (char *)malloc(sizeof(char) * 10);
+			arg->next->lenght = (char *)malloc(sizeof(char) * 10);
 			arg = arg->next;
 			nb++;
 		}
-		i++;
 	}
 	return (nb);
 }
@@ -60,6 +71,8 @@ int		ft_retrieves(const char *format, va_list ap)
 	int		i;
 
 	arg = (t_arg *)malloc(sizeof(t_arg));
+	arg->flags = (char *)malloc(sizeof(char) * 10);
+	arg->lenght = (char *)malloc(sizeof(char) * 10);
 	i = ft_check_format(format, arg);
 	tmp = arg;
 	while (i > 0)
@@ -73,9 +86,15 @@ int		ft_retrieves(const char *format, va_list ap)
 	{
 	ft_putstr(tmp->arg);
 	ft_putstr(" : ");
-	ft_putstr(tmp->precision);
+	ft_putnbr(tmp->precision);
 	ft_putstr(" : ");
 	ft_putchar(tmp->type);
+	ft_putstr(" : ");
+	ft_putnbr(tmp->width);
+	ft_putstr(" : ");
+	ft_putstr(tmp->flags);
+	ft_putstr(" : ");
+	ft_putstr(tmp->lenght);
 	ft_putchar('\n');
 	tmp = tmp->next;
 	}
