@@ -6,7 +6,7 @@
 #    By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/20 12:13:09 by pcrosnie          #+#    #+#              #
-#    Updated: 2016/06/13 10:40:00 by pcrosnie         ###   ########.fr        #
+#    Updated: 2016/06/13 15:45:09 by pcrosnie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = printf
 
 FLAGS = -Wall -Werror -Wextra
 
-SRC = libft/libft.a main.c ft_printf.c ft_retrieves_flags_n_width.c
+SRC = libft/libft.a main.c ft_printf.c ft_retrieves_flags_n_width.c ft_set_string.c ft_apply.c
 
 all: $(NAME)
 

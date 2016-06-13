@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:11:51 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/13 11:32:21 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/13 16:01:29 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <stdarg.h>
 #include "libft/libft.h"
 
+// options : 0 - 1 + 2 ' ' 3 # 4 0 5 hh 6 h 7 ll 8 l 9 j 10 z
+
 typedef struct	s_arg
 {
 	void	*arg;
@@ -24,9 +26,20 @@ typedef struct	s_arg
 	char	*lenght;
 	int		precision;
 	int		width;
+	char	*option;
+	char	*result;
 	struct	s_arg *next;
 }				t_arg;
 
+typedef struct	s_format
+{
+	char **format;
+}				t_format;
+
+int		ft_set_string(t_arg *arg);
+int		ft_apply(t_arg *arg);
+int		ft_check_options(t_arg *arg);
+int		ft_set_option(t_arg *arg);
 int		ft_retrieve_lenght(const char *format,t_arg *arg, int i);
 int		ft_retrieve_width(const char *format,t_arg *arg, int i);
 int		ft_retrieve_flags(const char *format, t_arg *arg, int i);
