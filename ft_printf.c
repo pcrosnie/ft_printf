@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:00:48 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/14 14:43:28 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/14 17:13:57 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int		ft_check_format(const char *format, t_arg *arg, t_format *ptr)
 			arg->next->flags = (char *)malloc(sizeof(char) * 10);
 			arg->next->lenght = (char *)malloc(sizeof(char) * 10);
 			arg = arg->next;
+			ptr->format[j][k] = '\0';
 			j++;
 			if (format[i] != '\0')
 			ptr->format[j] = (char *)malloc(sizeof(ft_strlen(format)));
@@ -72,10 +73,19 @@ int		ft_check_format(const char *format, t_arg *arg, t_format *ptr)
 		else
 		{
 			ptr->format[j][k] = format[i];
+//			ft_putchar(ptr->format[j][k]);
+//	ft_putchar(':');
+//			ft_putnbr(j);
+//	ft_putchar(':');
+//			ft_putnbr(k);
+//	ft_putchar('\n');
 			k++;
 			i++;
 		}
 	}
+//	i = 0;
+//	while (i < 2)
+//		ft_putstr(ptr->format[i++]);
 	ptr->format[j + 1] = NULL;
 	return (nb);
 }
@@ -127,16 +137,36 @@ t_arg	*ft_retrieves(const char *format, va_list ap, t_format *ptr)
 	return (arg);
 }
 
+void	ft_display(t_arg *arg, t_format *ptr)
+{
+	int i;
+
+	i = 0;
+	while (arg->next != NULL)
+	{
+		ft_putstr(ptr->format[i]);
+		if (arg->result)
+		{
+			ft_putstr(arg->result);
+			arg = arg->next;
+		}
+		i++;
+	}
+	if (ptr->format[i] != NULL)
+	ft_putstr(ptr->format[i]);
+}
+
 int		ft_printf(const char *format, ...)
 {
 	va_list ap;
 	t_arg	*arg;
 	t_format *ptr;
 
-	ptr = (t_format *)malloc(sizeof(t_format));
+	ptr = (t_format *)malloc(sizeof(t_format) * 10);
 	va_start(ap, format);
 	arg = ft_retrieves(format, ap , ptr);
 	ft_apply(arg);
-	ft_putstr(arg->result);
+	ft_display(arg, ptr);
+//	ft_putstr(arg->result);
 	return (0);
 }
