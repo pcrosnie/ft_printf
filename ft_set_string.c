@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:09:27 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/13 16:19:44 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/14 15:13:22 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,56 @@ int		ft_set_option(t_arg *arg)
 	return(0);
 }
 
+int		ft_check_s_options(t_arg *arg)
+{
+	int i;
+
+	i = 0;
+	while (i < 11)
+	{
+		if (arg->option[i] == 1 && i != 0 && i != 8)
+			return (-1);
+		i++;
+	}
+	return (0);
+}
+
+void	ft_s_precision(t_arg *arg)
+{
+	int i;
+	char *str;
+	char *tmp;	
+
+	i = 0;
+	str = (char *)malloc(sizeof(char) * ft_strlen((char *)arg->arg));
+	tmp = (char *)arg->arg;
+	while (i < arg->precision)
+	{
+		str[i] = tmp[i];
+		i++;
+	}
+	(arg->width == -1) ? arg->result = strdup(str) : 0;
+	if (arg->option[0] == 0 && arg->width != -1)
+		arg->result = ft_strjoin(ft_memset(ft_strnew(arg->width - ft_strlen(str)), ' ', arg->width - ft_strlen(str)), str);
+	if (arg->option[0] == 1 && arg->width != -1)
+		arg->result = ft_strjoin(str, ft_memset(ft_strnew(arg->width - ft_strlen(str)), ' ', arg->width - ft_strlen(str)));
+	free(str);
+}
+
 int		ft_set_string(t_arg *arg)
 {
-	char *str;
-
-	str = (char *)malloc(sizeof(char) * (arg->witdh + arg->precision + ft_strlen((char *)arg->arg)));
-	while (i < 	
+//	char *str;
+	if (ft_check_s_options(arg) == -1)
+		return(-1);
+//	if (arg->option[8] == 1)
+//		ft_wchar  else
+	if ((arg->option[0] == 1 || arg->option[0] == 0) && arg->precision == -1 && arg->width == -1)
+		arg->result = (char *)arg->arg;
+	if (arg->precision == -1 && arg->width != -1 && arg->option[0] == 0)
+		arg->result = ft_strjoin(ft_memset(ft_strnew(arg->width - ft_strlen((char *)arg->arg)), ' ', arg->width - ft_strlen((char *)arg->arg)), (char *)arg->arg);
+	if (arg->precision == -1 && arg->width != -1 && arg->option[0] == 1)
+		arg->result = ft_strjoin((char *)arg->arg, ft_memset(ft_strnew(arg->width - ft_strlen((char *)arg->arg)), ' ', arg->width - ft_strlen((char *)arg->arg)));
+	if (arg->precision != -1)
+		ft_s_precision(arg);
 	return(0);
 }

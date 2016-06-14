@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:00:48 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/13 15:59:56 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/14 14:43:28 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ int		ft_retrieve_precision(const char *format, t_arg *arg, int i)
 			j++;
 		}
 		tmp[j] = '\0';
-	}
 	arg->precision = ft_atoi(tmp);
+	}
+	else
+		arg->precision = -1;
 	free(tmp);
 	return (i);
 }
@@ -99,7 +101,7 @@ t_arg	*ft_retrieves(const char *format, va_list ap, t_format *ptr)
 	}
 	arg->next = NULL;
 	arg = tmp;
-	while (tmp->next != NULL)
+/*	while (tmp->next != NULL)
 	{
 	ft_putstr(tmp->arg);
 	ft_putstr(" : ");
@@ -121,7 +123,7 @@ t_arg	*ft_retrieves(const char *format, va_list ap, t_format *ptr)
 	{
 		ft_putstr(ptr->format[i++]);
 		ft_putchar('\n');
-	}
+	}*/
 	return (arg);
 }
 
@@ -135,5 +137,6 @@ int		ft_printf(const char *format, ...)
 	va_start(ap, format);
 	arg = ft_retrieves(format, ap , ptr);
 	ft_apply(arg);
+	ft_putstr(arg->result);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 10:30:03 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/13 14:10:32 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/14 14:49:59 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int		ft_retrieve_width(const char *format, t_arg *arg, int i)
 
 	j = 0;
 	tmp = (char *)malloc(sizeof(char) * ft_strlen(format));
+	if (ft_isdigit(format[i]) == 1)
+	{
 	while (ft_isdigit(format[i]) == 1)
 	{
 		tmp[j] = format[i];
@@ -42,6 +44,9 @@ int		ft_retrieve_width(const char *format, t_arg *arg, int i)
 	}
 	tmp[j] = '\0';
 	arg->width = ft_atoi(tmp);
+	}
+	else
+		arg->width = -1;
 	free(tmp);
 	return (i);
 }
