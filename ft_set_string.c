@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:09:27 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/14 15:13:22 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/15 15:31:21 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,24 @@ int		ft_set_option(t_arg *arg)
 {
 	int	i;
 	int	a;
+	int h;
+	int l;
 
 	i = 0;
+	l = 0;
+	h = 0;
 	arg->option = (char *)malloc(sizeof(char) * 11);
 	arg->option = ft_memset(arg->option, 0, 11);
 	while (arg->flags[i] || arg->lenght[i])
 	{
 		a = 0;
-		(arg->flags[i] == '-') ?  arg->option[0] = 1 : a++;;
+		(arg->flags[i] == '-') ?  arg->option[0] = 1 : a++;
 		(arg->flags[i] == '+') ? arg->option[1] = 1 : a++;
 		(arg->flags[i] == ' ') ? arg->option[2] = 1 : a++;
 		(arg->flags[i] == '#') ? arg->option[3] = 1 : a++;
 		(arg->flags[i] == '0') ? arg->option[4] = 1 : a++;
-		(arg->lenght[i] == 'h' && (arg->lenght[i + 1] == 'h' || arg->lenght[i - 1] == 'h')) ? arg->option[5] = 1 : a++;
-		(arg->lenght[i] == 'h' && arg->lenght[i + 1] != 'h' && arg->lenght[i - 1] != 'h') ? arg->option[6] = 1 : a++;
-		(arg->lenght[i] == 'l' && (arg->lenght[i + 1] == 'l' || arg->lenght[i - 1] == 'l')) ? arg->option[7] = 1 : a++;
-		(arg->lenght[i] == 'l' && arg->lenght[i + 1] != 'l' && arg->lenght[i - 1] != 'l') ? arg->option[8] = 1 : a++;
+		(arg->lenght[i] == 'h') ? h++ : a++;
+		(arg->lenght[i] == 'l') ? l++ : a++;
 		(arg->lenght[i] == 'j') ? arg->option[9] = 1 : a++;
 		(arg->lenght[i] == 'z') ? arg->option[10] = 1 : a++;
 		if (a == 11)
@@ -41,6 +43,10 @@ int		ft_set_option(t_arg *arg)
 		}
 		i++;
 	}
+	(h % 2 == 1 && h != 0) ? arg->option[6] = 1 : 0;
+	(h % 2 == 0 && h != 0) ? arg->option[5] = 1 : 0;
+	(l % 2 == 1 && l != 0) ? arg->option[8] = 1 : 0;
+	(l % 2 == 0 && l != 0) ? arg->option[7] = 1 : 0;
 	return(0);
 }
 

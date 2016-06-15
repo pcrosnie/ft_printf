@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:26:11 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/14 17:14:35 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/15 16:40:19 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int		main()
 	long long int h;
 
 	h = 123456789110;
-	c = '0';
+	c = '6';
 	a = 323;
 	d = M_PI;
-	str = "dhjakhdjkhsk";
-	str2 = "Salut je suis";
+	str = "de ouf";
+	str2 = "Hello world";
 	str3 = "le printf qui marche pas encore";
-	printf("%-100.10s\n", str3);
-	ft_printf("Salut je suis %100.10s heeeeeeeeeeeeeeee", str3);
+	printf("%hhd\n", c);
+    ft_printf("%s", str3);
 	return (0);
 }

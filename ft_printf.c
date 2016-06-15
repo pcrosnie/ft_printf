@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:00:48 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/14 17:13:57 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/15 16:17:53 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,19 +73,11 @@ int		ft_check_format(const char *format, t_arg *arg, t_format *ptr)
 		else
 		{
 			ptr->format[j][k] = format[i];
-//			ft_putchar(ptr->format[j][k]);
-//	ft_putchar(':');
-//			ft_putnbr(j);
-//	ft_putchar(':');
-//			ft_putnbr(k);
-//	ft_putchar('\n');
 			k++;
 			i++;
 		}
 	}
-//	i = 0;
-//	while (i < 2)
-//		ft_putstr(ptr->format[i++]);
+	(k == 0) ? ptr->format[j] = NULL : 0;
 	ptr->format[j + 1] = NULL;
 	return (nb);
 }
@@ -142,7 +134,7 @@ void	ft_display(t_arg *arg, t_format *ptr)
 	int i;
 
 	i = 0;
-	while (arg->next != NULL)
+	while (ptr->format[i] != NULL)
 	{
 		ft_putstr(ptr->format[i]);
 		if (arg->result)
@@ -152,8 +144,8 @@ void	ft_display(t_arg *arg, t_format *ptr)
 		}
 		i++;
 	}
-	if (ptr->format[i] != NULL)
-	ft_putstr(ptr->format[i]);
+//	if (ptr->format[i] != NULL)
+//	ft_putstr(ptr->format[i]);
 }
 
 int		ft_printf(const char *format, ...)
@@ -165,7 +157,8 @@ int		ft_printf(const char *format, ...)
 	ptr = (t_format *)malloc(sizeof(t_format) * 10);
 	va_start(ap, format);
 	arg = ft_retrieves(format, ap , ptr);
-	ft_apply(arg);
+	if (ft_apply(arg) == -1)
+		return (-1);
 	ft_display(arg, ptr);
 //	ft_putstr(arg->result);
 	return (0);
