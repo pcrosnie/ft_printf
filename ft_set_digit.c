@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 14:18:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/15 16:37:24 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/16 14:59:40 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_set_sign(t_arg *arg)
 	int i;
 
 	i = 0;
-	while (arg->result[i + 1])
+	while (arg->result[i + 1] && arg->result[i - 1] != '+' && arg->result[i - 1] != '-')
 	{
 		if (ft_isdigit(arg->result[i + 1]) == 1 && arg->arg >= 0)
 			arg->result[i] = '+';
@@ -49,6 +49,23 @@ void	ft_set_sign(t_arg *arg)
 			arg->result[i] = '-';
 		i++;
 	}
+}
+
+char	*ft_set_s_char_string(t_arg *arg, char *tmp, char b)
+{
+	char *str;
+	int i;
+
+	i = 0;
+	i = b;
+	str = (char *)malloc(sizeof(char) * (arg->width + arg->precision));
+	if (arg->width > arg->precision)
+	{
+	while (i < arg->width - arg->precision)
+		str[i++] = ' ';
+	while (i < arg->width)
+		str[i++] = '0';
+	return (str);
 }
 
 void	ft_digit_s_char(t_arg *arg)
@@ -59,8 +76,8 @@ void	ft_digit_s_char(t_arg *arg)
 	char b;
 
 	tmp = (char *)malloc(sizeof(char) * 5);
-	c = (signed char)arg;
-	tmp = ft_itoa((int)c);
+	c = (signed char)arg->arg;
+	tmp = ft_itoa(c);
 	tmp2 = (char *)malloc(sizeof(char) * (arg->width - ft_strlen(tmp)));
 	if (arg->option[4] == 1)
 	   	b = '0';
@@ -68,6 +85,7 @@ void	ft_digit_s_char(t_arg *arg)
 		b = ' ';
 	(arg->width > (int)ft_strlen(tmp)) ? tmp2 = ft_memset(ft_strnew(arg->width - ft_strlen(tmp)), b, arg->width - ft_strlen(tmp)) : 0;
 	(arg->width < (int)ft_strlen(tmp)) ? tmp2 = "" : 0;
+	(arg->precision > arg->width) ? tmp2 = ft_set_s_char_string(arg, tmp, b) : 0;
 	if (arg->option[2] == 1)
 		tmp2[0] = ' ';
 	if (arg->option[0] == 1)
