@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:26:11 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/21 12:23:48 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/21 16:24:30 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,20 @@ int		main()
 	double d;
 	int a;
 	signed char s;
-	signed char c;
+	short int c;
 	long long int h;
+	intmax_t t;
 
-	h = 123456789110;
-	c = '6';
-	s = 'r';
+	t = 420;
+	h = -9223372036854775807;
+	c = 245;
+	s = 114;
 	a = 323;
 	d = M_PI;
 	str = "de ouf";
 	str2 = "Hello world";
 	str3 = "le printf qui marche pas encore";
-	printf("%- .10hhdsalut%5.10hhda\n", c, s);
-    ft_printf("%- .10hhdsalut%5.10hhda", c, s);
+	printf("%0.10jdsalut%-+15.30llda\n", t, h);
+    ft_printf("%0.10jdsalut%-+15.30llda", t, h);
 	return (0);
 }
