@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 14:18:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/16 14:59:40 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/21 12:20:52 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,35 +36,42 @@ int		ft_check_d_option(t_arg *arg)
 	return (0);
 }
 
-void	ft_set_sign(t_arg *arg)
+char	*ft_set_sign(char *tmp, signed char c, int a)
 {
-	int i;
-
-	i = 0;
-	while (arg->result[i + 1] && arg->result[i - 1] != '+' && arg->result[i - 1] != '-')
+	if (a == 1 && ft_strlen(tmp) > 0)
 	{
-		if (ft_isdigit(arg->result[i + 1]) == 1 && arg->arg >= 0)
-			arg->result[i] = '+';
-		if (ft_isdigit(arg->result[i + 1]) == 1 && arg->arg < 0)
-			arg->result[i] = '-';
-		i++;
+		tmp[ft_strlen(tmp) - 1] = '\0';
 	}
+	if (c >= 0)
+		return (ft_strjoin("+", tmp));
+	else
+		return (ft_strjoin("-", tmp));
 }
 
-char	*ft_set_s_char_string(t_arg *arg, char *tmp, char b)
+char	*ft_set_d_s_char_prec(t_arg *arg, char **tmp)
 {
-	char *str;
-	int i;
+	char	*str;
+	char	*tmp2;
+	int		i;
+	int		j;
 
 	i = 0;
-	i = b;
-	str = (char *)malloc(sizeof(char) * (arg->width + arg->precision));
-	if (arg->width > arg->precision)
+	j = 0;
+	tmp2 = *tmp;
+	str = (char *)malloc(sizeof(char) * (ft_strlen(tmp2) + arg->precision));
+	while (i < arg->precision - (int)ft_strlen(tmp2))
 	{
-	while (i < arg->width - arg->precision)
-		str[i++] = ' ';
-	while (i < arg->width)
-		str[i++] = '0';
+		str[i] = '0';
+		i++;
+	}
+	while (j < (int)ft_strlen(tmp2))
+	{
+		str[i] = tmp2[j];
+		i++;
+		j++;
+	}
+	str[i] = '\0';
+//	free(&*tmp);
 	return (str);
 }
 
@@ -78,22 +85,26 @@ void	ft_digit_s_char(t_arg *arg)
 	tmp = (char *)malloc(sizeof(char) * 5);
 	c = (signed char)arg->arg;
 	tmp = ft_itoa(c);
-	tmp2 = (char *)malloc(sizeof(char) * (arg->width - ft_strlen(tmp)));
+	tmp2 = (char *)malloc(sizeof(char) * (arg->width + ft_strlen(tmp) + 5));
+	if (arg->precision != -1 && arg->precision > (int)ft_strlen(tmp))
+	tmp = ft_set_d_s_char_prec(arg, &tmp);
 	if (arg->option[4] == 1)
 	   	b = '0';
 	else
 		b = ' ';
+	if (arg->option[1] == 1 && arg->option[4] == 0)
+		tmp = ft_set_sign(tmp, c, 0);
+	if (arg->option[2] == 1)
+		tmp = ft_strjoin(" ", tmp);
 	(arg->width > (int)ft_strlen(tmp)) ? tmp2 = ft_memset(ft_strnew(arg->width - ft_strlen(tmp)), b, arg->width - ft_strlen(tmp)) : 0;
 	(arg->width < (int)ft_strlen(tmp)) ? tmp2 = "" : 0;
-	(arg->precision > arg->width) ? tmp2 = ft_set_s_char_string(arg, tmp, b) : 0;
-	if (arg->option[2] == 1)
-		tmp2[0] = ' ';
+	(arg->option[1] == 1 && arg->option[4] == 1) ? tmp2 = ft_set_sign(tmp2, c, 1) : 0;
 	if (arg->option[0] == 1)
 		arg->result = ft_strjoin(tmp, tmp2);
 	else 
 		arg->result = ft_strjoin(tmp2, tmp);
-	if (arg->option[1] == 1)
-		ft_set_sign(arg);
+	free(tmp);
+	(arg->width >= (int)ft_strlen(tmp))? free(tmp2) : 0;
 }
 
 int		ft_set_digit(t_arg *arg)

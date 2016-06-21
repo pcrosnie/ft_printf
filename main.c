@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:26:11 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/16 14:54:17 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/21 12:23:48 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		main()
 	str = "de ouf";
 	str2 = "Hello world";
 	str3 = "le printf qui marche pas encore";
-	printf("%-10hhdsalut%+010.4hhd\n", c, s);
-    ft_printf("%-10hhdsalut%+010.4hhd", c, s);
+	printf("%- .10hhdsalut%5.10hhda\n", c, s);
+    ft_printf("%- .10hhdsalut%5.10hhda", c, s);
 	return (0);
 }
