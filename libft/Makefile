@@ -6,7 +6,7 @@
 #    By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 17:07:03 by pcrosnie          #+#    #+#              #
-#    Updated: 2016/02/15 13:50:04 by pcrosnie         ###   ########.fr        #
+#    Updated: 2016/06/22 11:46:07 by pcrosnie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRC += ft_atoi.c
 SRC += ft_strsplit.c
 SRC += ft_itoa.c
 SRC += ft_power.c
+SRC += ft_itoa_base.c
 SRC += ft_strtrim.c
 SRC += ft_bzero.c
 SRC += ft_isalnum.c

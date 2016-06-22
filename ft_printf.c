@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:00:48 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/15 16:17:53 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/22 10:34:14 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		ft_check_format(const char *format, t_arg *arg, t_format *ptr)
 	k = 0;
 	while (format[i])
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i + 1] != '%' && format[i - 1] != '%')
 		{
 			i++;
 			i = ft_retrieve_flags(format, arg, i);
@@ -72,6 +72,7 @@ int		ft_check_format(const char *format, t_arg *arg, t_format *ptr)
 		}
 		else
 		{
+			(format[i] == '%' && format[i + 1] == '%') ? i++ : 0;
 			ptr->format[j][k] = format[i];
 			k++;
 			i++;

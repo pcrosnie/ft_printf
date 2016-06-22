@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 14:18:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/21 16:22:30 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/22 10:46:28 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ char	*ft_cast_d(t_arg *arg)
 	char	*str;
 
 	str = NULL;
+	str = ft_itoa((int)arg->arg);
 	(arg->option[5] == 1) ? str = ft_itoa_long((signed char)arg->arg) : 0;
 	(arg->option[6] == 1) ? str = ft_itoa_long((short int)arg->arg) : 0;
 	(arg->option[7] == 1) ? str = ft_itoa_long((long long int)arg->arg) : 0;
