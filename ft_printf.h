@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:11:51 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/22 10:42:16 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/22 15:25:29 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ typedef struct	s_format
 	char **format;
 }				t_format;
 
+int		ft_set_hexa(t_arg *arg);
+char	*ft_set_maj(char *str);
+char	*ft_set_d_s_char_prec(t_arg *arg, char **tmp);
+int		ft_set_octal(t_arg *arg);
+int		ft_no_option(t_arg *arg);
 char	*ft_itoa_long(long long int c);
 int		ft_set_digit(t_arg *arg);
 int		ft_set_string(t_arg *arg);

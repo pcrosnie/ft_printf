@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 14:18:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/22 10:46:28 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/22 14:31:09 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char	*ft_cast_d(t_arg *arg)
 	char	*str;
 
 	str = NULL;
-	str = ft_itoa((int)arg->arg);
+	(ft_no_option(arg) == 1) ? str = ft_itoa((int)arg->arg) : 0;
 	(arg->option[5] == 1) ? str = ft_itoa_long((signed char)arg->arg) : 0;
 	(arg->option[6] == 1) ? str = ft_itoa_long((short int)arg->arg) : 0;
 	(arg->option[7] == 1) ? str = ft_itoa_long((long long int)arg->arg) : 0;
@@ -115,16 +115,12 @@ void	ft_digit_s_char(t_arg *arg)
 	   	b = '0';
 	else
 		b = ' ';
-//	if (arg->option[1] == 1 && arg->option[4] == 0)
-//		tmp = ft_set_sign(tmp, c, 0);
 	if (arg->option[2] == 1 && a == 0)
 	{
-		ft_putchar('Z');
 		tmp = ft_strjoin(" ", tmp);
 	}
 	(arg->width > (int)ft_strlen(tmp)) ? tmp2 = ft_memset(ft_strnew(arg->width - ft_strlen(tmp)), b, arg->width - ft_strlen(tmp)) : 0;
 	(arg->width < (int)ft_strlen(tmp)) ? tmp2 = "" : 0;
-//	(arg->option[1] == 1 && arg->option[4] == 1) ? tmp2 = ft_set_sign(tmp2, c, 1) : 0;
 	if (arg->option[0] == 1)
 		arg->result = ft_strjoin(tmp, tmp2);
 	else 

@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:00:48 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/22 10:34:14 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/22 15:48:10 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		ft_check_format(const char *format, t_arg *arg, t_format *ptr)
 	nb = 0;
 	j = 0;
 	k = 0;
-	while (format[i])
+	while (format && format[i])
 	{
 		if (format[i] == '%' && format[i + 1] != '%' && format[i - 1] != '%')
 		{
@@ -155,6 +155,8 @@ int		ft_printf(const char *format, ...)
 	t_arg	*arg;
 	t_format *ptr;
 
+	if (format)
+	{
 	ptr = (t_format *)malloc(sizeof(t_format) * 10);
 	va_start(ap, format);
 	arg = ft_retrieves(format, ap , ptr);
@@ -162,5 +164,6 @@ int		ft_printf(const char *format, ...)
 		return (-1);
 	ft_display(arg, ptr);
 //	ft_putstr(arg->result);
+	}
 	return (0);
 }

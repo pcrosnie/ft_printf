@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 14:39:09 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/22 11:47:12 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/22 15:29:39 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	ft_set_base(int n)
 	if (ft_isdigit(n) == 1)
 		c = (char)n;
 	else
-		c = n + 7;
+		c = n + 39;
 	return (c);
 }
 
