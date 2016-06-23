@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:26:11 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/23 13:09:49 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/23 15:09:03 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int		main()
 	long x;
 	size_t t;
 	wchar_t *w;
+	char u;
 
+	u = 'a';
 	setlocale(LC_ALL, "");
 	w = (wchar_t *)malloc(sizeof(wchar_t) * 10);
 	*w = 2345;;
@@ -43,8 +45,7 @@ int		main()
 	str = "de ouf";
 	str2 = "Hello world";
 	str3 = "le printf qui marche pas encore";
-	//printf("test %s\n", "coucou");
-	printf("%Sa\n", L"ℜhjksf");
-	ft_printf("%Sa\n", L"ℜjdsakl");
+	printf("%-10c\n", u);
+	ft_printf("%-10c\n", u);
 	return (0);
 }
