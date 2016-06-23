@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:26:11 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/23 11:59:51 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/23 13:09:49 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		main()
 	str2 = "Hello world";
 	str3 = "le printf qui marche pas encore";
 	//printf("test %s\n", "coucou");
-	printf("|%23.5S|\n", L"ℜ ℜ ℜ ℜ ℜ ℜ ℜ ℜ ℜ");
-	ft_printf("|%C|\n", L'o');
+	printf("%Sa\n", L"ℜhjksf");
+	ft_printf("%Sa\n", L"ℜjdsakl");
 	return (0);
 }

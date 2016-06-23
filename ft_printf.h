@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:11:51 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/23 11:46:14 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/23 12:50:43 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct	s_format
 	char **format;
 }				t_format;
 
+int		ft_wchar_string(t_arg *arg);
 char	*ft_mask1(wchar_t n);
 char	*ft_mask2(wchar_t n);
 char	*ft_mask3(wchar_t n);
