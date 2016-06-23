@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 14:27:38 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/22 15:46:22 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/23 11:48:02 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ int		ft_check_options(t_arg *arg)
  	(arg->type == 'x') ? ft_set_hexa(arg) : a++;
  	(arg->type == 'X') ? ft_set_hexa(arg) : a++;
  //	(arg->type == 'c') ?
- //	(arg->type == 'C') ?
+ 	(arg->type == 'C') ? ft_wchar(arg) : a++;
 
-	if (a == 7 || ft_check_false_specifier(safe) == -1)
+	if (a == 8 || ft_check_false_specifier(safe) == -1)
 		return(-1);
 	return (0);
 }

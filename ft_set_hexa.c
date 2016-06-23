@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 15:16:09 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/22 15:44:18 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/23 09:51:44 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,13 @@ int		ft_set_hexa(t_arg *arg)
 	{
 	//	(arg->option[3] == 1) ? tmp = ft_strjoin("0x", tmp) : 0;
 		arg->result = ft_strjoin(tmp, tmp2);
-		arg->result = ft_strjoin("0x", arg->result);
+		(arg->option[3] == 1) ? arg->result = ft_strjoin("0x", arg->result) : 0;
 	}
 	else
 	{
+		(arg->option[3] == 1 && arg->width >= (int)ft_strlen(tmp)) ? tmp2[ft_strlen(tmp2) - 2] = '0' : 0;
+		(arg->option[3] == 1 && arg->width >= (int)ft_strlen(tmp)) ? tmp2[ft_strlen(tmp2) - 1] = 'x' : 0;
+		(arg->option[3] == 1 && arg->width < (int)ft_strlen(tmp)) ? tmp2 = "0x" : 0;
 		arg->result = ft_strjoin(tmp2, tmp);
 	}
 	(arg->type == 'X') ? arg->result = ft_set_maj(arg->result) : 0;

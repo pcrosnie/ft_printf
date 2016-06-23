@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 13:18:24 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/22 15:31:28 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/23 11:46:36 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ int		ft_set_octal(t_arg *arg)
 	}
 	else
 	{
-		(arg->option[3] == 1 && arg->precision < (int)ft_strlen(tmp)) ? tmp2[ft_strlen(tmp2) - 1] = '0' : 0;
+		(arg->option[3] == 1 && arg->width >= (int)ft_strlen(tmp)) ? tmp2[ft_strlen(tmp2) - 1] = '0' : 0;
+		(arg->option[3] == 1 && arg->width < (int)ft_strlen(tmp)) ? tmp2 = "0" : 0;
 		arg->result = ft_strjoin(tmp2, tmp);
 	}
 	free(tmp);
