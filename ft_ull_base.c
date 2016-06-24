@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 11:39:12 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/24 11:45:14 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/24 11:51:29 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char            *ft_ull_base(unsigned long long n, int base)
 	}*/
 	while (i > 0)
 	{
-		str[i-- - j] = ft_set_bases((nb % base) + 48);
+		str[i--] = ft_set_bases((nb % base) + 48);
 		nb = nb / base;
 	}
 	return (str);

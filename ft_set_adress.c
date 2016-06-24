@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 10:36:19 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/24 11:46:48 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/24 13:13:35 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,19 @@ int		ft_set_adress(t_arg *arg)
 	char	*str;
 	char	*tmp;
 
+	str = NULL;
 	if (!(arg->arg))
 		str = "0x0";
-//	else
-//		str = ft_ull_base((unsigned long long)&arg->arg, 16);
-	 (arg->width >= ft_strlen(str)) ? tmp = ft_memset(ft_strnew(arg->width - ft_strlen(str)), ' ', arg->width - ft_strlen(str)) : 0;
-	 (arg->width < ft_strlen(str)) ? tmp = "" : 0;
-//	 tmp[ft_strlen(tmp) - 2] = '0';
-//	 tmp[ft_strlen(tmp) - 1] = 'x';
+	else
+		str = ft_itoa_base((intmax_t)arg->arg, 16);
+	(arg->option[0] == 1) ? str = ft_strjoin("0x", str) : 0;
+	 (arg->width >= (int)ft_strlen(str)) ? tmp = ft_memset(ft_strnew(arg->width - ft_strlen(str)), ' ', arg->width - ft_strlen(str)) : 0;
+	 (arg->width < (int)ft_strlen(str)) ? tmp = "" : 0;
+	 if (arg->option[0] == 0)
+	 {
+	 	tmp[ft_strlen(tmp) - 2] = '0';
+	 	tmp[ft_strlen(tmp) - 1] = 'x';
+	 }
 	if (arg->option[0] == 1)
 		arg->result = ft_strjoin(str, tmp);
 	else
