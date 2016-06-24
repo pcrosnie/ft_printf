@@ -6,13 +6,13 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 14:39:09 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/22 15:29:39 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/24 10:16:09 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long int	ft_count_for_base_m(long long int n, int base)
+long int	ft_count_for_base_m(intmax_t n, int base)
 {
 	long int	i;
 
@@ -36,11 +36,11 @@ char	ft_set_base(int n)
 	return (c);
 }
 
-char		*ft_itoa_base(long long int n, int base)
+char		*ft_itoa_base(intmax_t n, int base)
 {
-	long int				i;
+	long int		i;
 	int				j;
-	unsigned long long int	nb;
+	uintmax_t		nb;
 	char			*str;
 
 	if (n > 9223372036854775807 || n < -9223372036854775807)

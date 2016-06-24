@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:26:11 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/23 15:09:03 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/24 11:21:15 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		main()
 	char *str2;
 	char *str3;
 	double d;
-	int a;
+	unsigned int a;
 	signed char s;
 	short int c;
 	long long int h;
@@ -28,15 +28,17 @@ int		main()
 	size_t t;
 	wchar_t *w;
 	char u;
+	void *p;
 
 	u = 'a';
 	setlocale(LC_ALL, "");
 	w = (wchar_t *)malloc(sizeof(wchar_t) * 10);
-	*w = 2345;;
+	*w = 2345;
 	//w[1] = '\0';
 	t = 2345;
 	x = -6378344;
 	t = -420;
+	p = "salut";
 	h = -9223372036854775807;
 	c = 245;
 	s = 114;
@@ -45,7 +47,8 @@ int		main()
 	str = "de ouf";
 	str2 = "Hello world";
 	str3 = "le printf qui marche pas encore";
-	printf("%-10c\n", u);
-	ft_printf("%-10c\n", u);
+	printf("%30p\n", p);
+	printf("%30p\n", p);
+	ft_printf("%30p\n", p);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:11:51 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/23 15:05:42 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/24 11:43:56 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ typedef struct	s_format
 	char **format;
 }				t_format;
 
+char	*ft_ull_base(unsigned long long n, int base);
+int		ft_set_adress(t_arg *arg);
+int		ft_set_u_digit(t_arg *arg);
+int		ft_check_d_option(t_arg *arg);
 int		ft_set_char(t_arg *arg);
 int		ft_wchar_string(t_arg *arg);
 char	*ft_mask1(wchar_t n);
@@ -49,7 +53,7 @@ char	*ft_set_maj(char *str);
 char	*ft_set_d_s_char_prec(t_arg *arg, char **tmp);
 int		ft_set_octal(t_arg *arg);
 int		ft_no_option(t_arg *arg);
-char	*ft_itoa_long(long long int c);
+char	*ft_itoa_long(intmax_t c);
 int		ft_set_digit(t_arg *arg);
 int		ft_set_string(t_arg *arg);
 int		ft_apply(t_arg *arg);

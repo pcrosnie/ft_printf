@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 14:27:38 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/23 15:04:49 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/24 11:38:59 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,16 @@ int		ft_check_options(t_arg *arg)
 	(arg->type == 'S' || (arg->type == 's' && arg->option[8] == 1)) ? ft_wchar_string(arg) : a++;
 	(arg->type == 'd' || arg->type == 'i') ? ft_set_digit(arg) : a++;
 	(arg->type == 'D') ? ft_set_d_up_digit(arg) : a++;
-//	(arg->type == 'p') ? ft_set_adress(arg) : 0;
+	(arg->type == 'p') ? ft_set_adress(arg) : a++;
 	(arg->type == 'o') ? ft_set_octal(arg) : a++;
  	(arg->type == 'O') ? ft_set_octal(arg) : a++;
- //	(arg->type == 'u') ? 
- //	(arg->type == 'U') ?
+ 	(arg->type == 'u') ? ft_set_u_digit(arg) : a++; 
+ 	(arg->type == 'U') ? ft_set_u_digit(arg) : a++;
  	(arg->type == 'x') ? ft_set_hexa(arg) : a++;
  	(arg->type == 'X') ? ft_set_hexa(arg) : a++;
  	(arg->type == 'c') ? ft_set_char(arg) : a++;
  	(arg->type == 'C') ? ft_wchar(arg) : a++;
-
-	if (a == 10 || ft_check_false_specifier(safe) == -1)
+	if (a == 13 || ft_check_false_specifier(safe) == -1)
 	{
 		ft_putstr("hereeeee");
 		return(-1);

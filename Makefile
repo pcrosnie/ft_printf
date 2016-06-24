@@ -6,7 +6,7 @@
 #    By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/20 12:13:09 by pcrosnie          #+#    #+#              #
-#    Updated: 2016/06/23 15:05:16 by pcrosnie         ###   ########.fr        #
+#    Updated: 2016/06/24 11:41:40 by pcrosnie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = printf
 
 FLAGS = -Wall -Wextra -Werror
 
-SRC = ft_apply.c ft_mask.c ft_wchar.c ft_itoa_long.c ft_printf.c ft_retrieves_flags_n_width.c ft_set_digit.c ft_set_string.c ft_set_octal.c ft_set_hexa.c ft_set_char.c main.c
+SRC = ft_apply.c ft_ull_base.c ft_mask.c ft_wchar.c ft_itoa_long.c ft_printf.c ft_retrieves_flags_n_width.c ft_set_digit.c ft_set_string.c ft_set_octal.c ft_set_hexa.c ft_set_char.c ft_u_dec.c ft_set_adress.c main.c
 
 OBJ = $(SRC:%.c=%.o)
 
