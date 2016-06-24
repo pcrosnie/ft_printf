@@ -6,12 +6,11 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:00:48 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/22 15:48:10 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/24 13:47:38 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int		ft_retrieve_precision(const char *format, t_arg *arg, int i)
 {
@@ -130,17 +129,23 @@ t_arg	*ft_retrieves(const char *format, va_list ap, t_format *ptr)
 	return (arg);
 }
 
+void	ft_output(const char *str, t_arg *arg)
+{
+	arg->n += write(1, str, ft_strlen(str));
+}
+
 void	ft_display(t_arg *arg, t_format *ptr)
 {
 	int i;
 
 	i = 0;
+	arg->n = 0;
 	while (ptr->format[i] != NULL)
 	{
-		ft_putstr(ptr->format[i]);
+		ft_output(ptr->format[i], arg);
 		if (arg->result)
 		{
-			ft_putstr(arg->result);
+			ft_output(arg->result, arg);
 			arg = arg->next;
 		}
 		i++;
@@ -155,6 +160,7 @@ int		ft_printf(const char *format, ...)
 	t_arg	*arg;
 	t_format *ptr;
 
+	arg = NULL;
 	if (format)
 	{
 	ptr = (t_format *)malloc(sizeof(t_format) * 10);
@@ -164,6 +170,7 @@ int		ft_printf(const char *format, ...)
 		return (-1);
 	ft_display(arg, ptr);
 //	ft_putstr(arg->result);
+	return (arg->n);
 	}
 	return (0);
 }

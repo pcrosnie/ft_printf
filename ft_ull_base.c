@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 11:39:12 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/24 11:51:29 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/24 13:45:26 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char            *ft_ull_base(unsigned long long n, int base)
 		return (NULL);
 	j = 1;
 	nb = n;
-	i = ft_count_base_m(n, base);
+	i = ft_count_base_m(n, base) + 1;
 	str = (char *)ft_memalloc(i + 3);
 	if (n == 0)
 		str[0] = '0';

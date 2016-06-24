@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:11:51 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/24 11:43:56 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/24 13:31:09 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct	s_arg
 	char	*lenght;
 	int		precision;
 	int		width;
+	int		n;
 	char	*option;
 	char	*result;
 	struct	s_arg *next;

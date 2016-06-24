@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 14:27:38 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/24 11:38:59 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/24 13:46:46 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int		ft_check_options(t_arg *arg)
 	a = 0;
 	safe = (int *)malloc(sizeof(int) * 13);
 	safe = ft_memset(safe, 0, 13);
+	if (arg->arg == NULL)
+		return (0);
 	(arg->type == 's' && arg->option[8] == 0) ? safe[0] = ft_set_string(arg) : a++;
 	(arg->type == 'S' || (arg->type == 's' && arg->option[8] == 1)) ? ft_wchar_string(arg) : a++;
 	(arg->type == 'd' || arg->type == 'i') ? ft_set_digit(arg) : a++;
