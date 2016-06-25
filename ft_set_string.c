@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:09:27 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/24 14:04:48 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/25 10:40:13 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ft_s_precision(t_arg *arg)
 {
 	int i;
 	char *str;
-	char *tmp;	
+	char *tmp;
 
 	i = 0;
 	str = (char *)malloc(sizeof(char) * ft_strlen((char *)arg->arg));
@@ -88,11 +88,13 @@ void	ft_s_precision(t_arg *arg)
 
 int		ft_set_string(t_arg *arg)
 {
-//	char *str;
+	if (arg->arg == NULL)
+	{
+		arg->result = "(null)";
+		return (0);
+	}
 	if (ft_check_s_options(arg) == -1)
 		return(-1);
-//	if (arg->option[8] == 1)
-//		ft_wchar  else
 	if ((arg->option[0] == 1 || arg->option[0] == 0) && arg->precision == -1 && arg->width == -1)
 		arg->result = (char *)arg->arg;
 	if (arg->precision == -1 && arg->width != -1 && arg->option[0] == 0)

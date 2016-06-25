@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 15:16:09 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/23 12:31:46 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/25 13:45:19 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,15 @@ int		ft_set_hexa(t_arg *arg)
 	char    b;
 
 	b = ' ';
-	if (ft_check_x_options(arg) == -1)
-		return (-1);
+	if ((intmax_t)arg->arg == 0)
+	{
+		arg->result = "0";
+		return (0);
+	}
+	(arg->option[0] == 1) ? arg->option[4] = 0 : 0;
+	(arg->option[0] == 1 && arg->option[3] == 1) ? arg->width -= 2 : 0;
+//	if (ft_check_x_options(arg) == -1)
+//		return (-1);
 	(arg->option[4] == 1 && arg->precision == -1) ? b = '0' : 0;
 	tmp = ft_cast_x_option(arg);
 	if (arg->precision != -1 && arg->precision > (int)ft_strlen(tmp))
@@ -59,9 +66,11 @@ int		ft_set_hexa(t_arg *arg)
 	}
 	else
 	{
-		(arg->option[3] == 1 && arg->width >= (int)ft_strlen(tmp)) ? tmp2[ft_strlen(tmp2) - 2] = '0' : 0;
-		(arg->option[3] == 1 && arg->width >= (int)ft_strlen(tmp)) ? tmp2[ft_strlen(tmp2) - 1] = 'x' : 0;
+		(arg->option[3] == 1 && arg->width >= (int)ft_strlen(tmp) && arg->option[4] == 0) ? tmp2[ft_strlen(tmp2) - 2] = '0' : 0;
+		(arg->option[3] == 1 && arg->width >= (int)ft_strlen(tmp) && arg->option[4] == 0) ? tmp2[ft_strlen(tmp2) - 1] = 'x' : 0;
 		(arg->option[3] == 1 && arg->width < (int)ft_strlen(tmp)) ? tmp2 = "0x" : 0;
+		(arg->option[3] == 1 && arg->width >= (int)ft_strlen(tmp) && arg->option[4] == 1) ? tmp2[0] = '0' : 0;
+		(arg->option[3] == 1 && arg->width >= (int)ft_strlen(tmp) && arg->option[4] == 1) ? tmp2[1] = 'x' : 0;
 		arg->result = ft_strjoin(tmp2, tmp);
 	}
 	(arg->type == 'X') ? arg->result = ft_set_maj(arg->result) : 0;

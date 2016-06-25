@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:00:48 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/24 13:54:28 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/25 13:49:33 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,29 +129,29 @@ t_arg	*ft_retrieves(const char *format, va_list ap, t_format *ptr)
 	return (arg);
 }
 
-void	ft_output(const char *str, t_arg *arg)
+int		ft_output(const char *str)
 {
-	arg->n += write(1, str, ft_strlen(str));
+	return (write(1, str, ft_strlen(str)));
 }
 
-void	ft_display(t_arg *arg, t_format *ptr)
+int		ft_display(t_arg *arg, t_format *ptr)
 {
 	int i;
+	int n;
 
 	i = 0;
-	arg->n = 0;
+	n = 0;
 	while (ptr->format[i] != NULL)
 	{
-		ft_output(ptr->format[i], arg);
+		n += ft_output(ptr->format[i]);
 		if (arg->result)
 		{
-			ft_output(arg->result, arg);
+			n += ft_output(arg->result);
 			arg = arg->next;
 		}
 		i++;
 	}
-//	if (ptr->format[i] != NULL)
-//	ft_putstr(ptr->format[i]);
+	return (n);
 }
 
 int		ft_printf(const char *format, ...)
@@ -166,11 +166,10 @@ int		ft_printf(const char *format, ...)
 	ptr = (t_format *)malloc(sizeof(t_format) * 10);
 	va_start(ap, format);
 	arg = ft_retrieves(format, ap , ptr);
+	arg->n = 0;
 	if (ft_apply(arg) == -1)
 		return (-1);
-	ft_display(arg, ptr);
-//	ft_putstr(arg->result);
-	return (arg->n);
+	return (ft_display(arg, ptr));
 	}
 	return (0);
 }

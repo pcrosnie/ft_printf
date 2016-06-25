@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 13:18:24 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/24 14:05:19 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/25 13:49:00 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,12 @@ int		ft_set_octal(t_arg *arg)
 	char	b;
 
 	b = ' ';
+	(arg->option[0] == 1) ? arg->option[4] = 0 : 0;
 	if (ft_check_o_options(arg) == -1)
 		return (-1);
 	(arg->option[4] == 1 && arg->precision == -1) ? b = '0' : 0;
 	(arg->type == 'O') ? arg->option[8] = 1 : 0;
+	(arg->option[0] == 1 && arg->option[3] == 1) ? arg->width-- : 0;
 	tmp = ft_cast_o_option(arg);
 	if (arg->precision != -1 && arg->precision > (int)ft_strlen(tmp))
 		tmp = ft_set_d_s_char_prec(arg, &tmp);

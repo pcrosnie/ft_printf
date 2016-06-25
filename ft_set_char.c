@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/23 14:52:00 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/24 13:54:35 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/25 13:07:17 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ int		ft_set_char(t_arg *arg)
 	char *str;
 	char *tmp;
 
+//	if (arg->arg == 0)
+//	{
+//		arg->result = "\0";
+//		return (0);
+//	}
 	str = ft_strnew(1);
 	str[0] = (int)arg->arg;
 	str[1] = '\0';
