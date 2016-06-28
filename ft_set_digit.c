@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 14:18:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/25 14:13:11 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/28 14:43:18 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void	ft_digit_s_char(t_arg *arg)
 
 	a = 0;
 	tmp = ft_cast_d(arg);
+	(tmp == NULL) ? tmp = "\0" : 0;
 	(tmp[0] == '-') ? a = 1 : 0;
 	tmp2 = (char *)malloc(sizeof(char) * (arg->width + ft_strlen(tmp) + 5));
 	if (arg->precision != -1 && arg->precision > (int)ft_strlen(tmp))
@@ -119,22 +120,42 @@ void	ft_digit_s_char(t_arg *arg)
 	{
 		tmp = ft_strjoin(" ", tmp);
 	}
-	(arg->width > (int)ft_strlen(tmp)) ? tmp2 = ft_memset(ft_strnew(arg->width - ft_strlen(tmp)), b, arg->width - ft_strlen(tmp)) : 0;
+	(arg->width >= (int)ft_strlen(tmp)) ? tmp2 = ft_memset(ft_strnew(arg->width - ft_strlen(tmp)), b, arg->width - ft_strlen(tmp)) : 0;
 	(arg->width < (int)ft_strlen(tmp)) ? tmp2 = "" : 0;
+	(ft_no_option(arg) == 1 && arg->width > arg->precision && arg->precision != -1 && arg->width != -1 && arg->arg < 0) ? tmp[0] = '-' : 0;
 	if (arg->option[0] == 1)
 		arg->result = ft_strjoin(tmp, tmp2);
 	else 
 		arg->result = ft_strjoin(tmp2, tmp);
 	(arg->option[1] == 1 && (int)arg->arg > 0 && arg->option[4] == 1) ? arg->result[0] = '+' : 0;
-	free(tmp);
+	((int)arg->arg < 0 && arg->option[4] == 1) ? arg->result[0] = '-' : 0;
+	((int)arg->arg < 0 && arg->option[4] == 1) ? arg->result[arg->width - ft_strlen(tmp)] = '0' : 0;
 	(arg->width >= (int)ft_strlen(tmp))? free(tmp2) : 0;
+}
+
+char	*ft_scotch_d(t_arg *arg)
+{
+	int i;
+	char *str;
+
+	i = 0;
+	str = (char *)malloc(sizeof(char) * arg->width);
+	while (i < arg->width - arg->precision)
+		str[i++] = ' ';
+	while (i < arg->width)
+		str[i++] = '0';
+	str[i] = '\0';
+	return (str);
 }
 
 int		ft_set_digit(t_arg *arg)
 {
 	(arg->option[0] == 1) ? arg->option[4] = 0 : 0;
 	(arg->option[1] == 1) ? arg->option[2] = 0 : 0;
-	if (arg->arg == '\0')
+	(arg->option[4] == 1 && arg->width != -1 && arg->precision != -1 && arg->width > arg->precision && arg->arg == 0) ? arg->result = ft_scotch_d(arg) : 0;
+	if (arg->option[4] == 1 && arg->width != -1 && arg->precision != -1 && arg->width > arg->precision && arg->arg == 0)
+		return(0);
+	if (arg->arg == '\0' && arg->precision == -1 && arg->width == -1)
 	{
 		arg->result = "0";
 		(arg->option[1] == 1) ? arg->result = "+0" : 0;

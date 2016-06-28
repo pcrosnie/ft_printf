@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:00:48 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/25 13:49:33 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/28 14:57:25 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,29 @@ int		ft_output(const char *str)
 	return (write(1, str, ft_strlen(str)));
 }
 
+int		ft_c_display(t_arg *arg)
+{
+	int i;
+	int n;
+	char c;
+
+	i = 0;
+	n = 0;
+	c = '\0';
+	if (arg->option[0] == 1)
+		n += write(1, &c, 1);
+	c = ' ';
+	while (i < arg->width - 1)
+	{
+		n += write (1, &c, 1);
+		i++;
+	}
+	c = '\0';
+	if (arg->option[0] == 0)
+		n += write(1, &c, 1);
+	return (n);
+}
+
 int		ft_display(t_arg *arg, t_format *ptr)
 {
 	int i;
@@ -146,7 +169,10 @@ int		ft_display(t_arg *arg, t_format *ptr)
 		n += ft_output(ptr->format[i]);
 		if (arg->result)
 		{
-			n += ft_output(arg->result);
+			if ((char)arg->arg == '\0' && (arg->type == 'c' || arg->type == 'C'))
+				n += ft_c_display(arg);
+			else
+				n += ft_output(arg->result);
 			arg = arg->next;
 		}
 		i++;

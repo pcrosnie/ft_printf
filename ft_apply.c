@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 14:27:38 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/25 10:58:57 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/28 14:57:58 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,26 @@ void	ft_set_d_up_digit(t_arg *arg)
 	ft_set_digit(arg);
 }
 
+int		ft_set_other(t_arg *arg)
+{
+	char	*str;
+	int 	i;
+
+	i = 0;
+	str = (char *)malloc(sizeof(char) * (10 + arg->width + arg->precision + ft_strlen(arg->lenght)));
+	if (arg->option[0] == 1)
+		str[i++] = arg->type;
+	while (i < arg->width - 1)
+	{
+		str[i++] = ' ';
+	}
+	if (arg->option[0] == 0)
+		str[i++] = arg->type;
+	str[i] = '\0';
+	arg->result = str;
+	return (0);
+}
+
 int		ft_check_options(t_arg *arg)
 {
 	int a;
@@ -53,11 +73,9 @@ int		ft_check_options(t_arg *arg)
  	(arg->type == 'X') ? ft_set_hexa(arg) : a++;
  	(arg->type == 'c') ? ft_set_char(arg) : a++;
  	(arg->type == 'C') ? ft_wchar(arg) : a++;
+	(a == 13) ? ft_set_other(arg) : 0;
 	if (a == 13 || ft_check_false_specifier(safe) == -1)
-	{
-		ft_putstr("hereeeee");
-		return(-1);
-	}
+		return (1);
 	return (0);
 }
 
