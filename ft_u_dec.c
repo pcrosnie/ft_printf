@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 09:48:40 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/24 10:36:02 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/30 14:37:29 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char    *ft_cast_u(t_arg *arg)
 	char    *str;
 
 	str = NULL;
-	(ft_no_option(arg) == 1) ? str = ft_itoa((unsigned int)arg->arg) : 0;
+	(ft_no_option(arg) == 1) ? str = ft_itoa_long((unsigned int)arg->arg) : 0;
 	(arg->option[5] == 1) ? str = ft_itoa_long((unsigned char)arg->arg) : 0;
 	(arg->option[6] == 1) ? str = ft_itoa_long((unsigned short int)arg->arg) : 0;
 	(arg->option[7] == 1) ? str = ft_itoa_long((unsigned long long int)arg->arg) : 0;
@@ -60,6 +60,11 @@ void    ft_digit(t_arg *arg)
 
 int             ft_set_u_digit(t_arg *arg)
 {
+	if ((arg->precision == -2 || arg->precision == 0) && arg->arg == 0)
+	{
+		arg->result = "";
+		return (0);
+	}
 	if (ft_check_d_option(arg) == -1)
 		return (-1);
 	(arg->type == 'U') ? arg->option[8] = 1 : 0;

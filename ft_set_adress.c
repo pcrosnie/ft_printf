@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 10:36:19 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/28 14:03:51 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/30 12:21:39 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		ft_set_adress(t_arg *arg)
 	 	tmp[ft_strlen(tmp) - 2] = '0';
 	 	tmp[ft_strlen(tmp) - 1] = 'x';
 	 }
-	 else
+	 else if (arg->option[0] == 0)
 		 tmp = "0x";
 	if (arg->option[0] == 1)
 		arg->result = ft_strjoin(str, tmp);

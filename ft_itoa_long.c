@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 14:39:09 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/24 10:17:56 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/30 14:17:11 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,13 @@ long int	ft_count_for_ten_m(intmax_t n)
 	return (i);
 }
 
-char		*ft_itoa_long(intmax_t n)
+char		*ft_itoa_long(long long int n)
 {
 	long int		i;
 	int				j;
-	uintmax_t		nb;
+	unsigned long long	nb;
 	char			*str;
 
-	if (n > 9223372036854775807 || n < -9223372036854775807)
-		return (NULL);
 	j = 1;
 	nb = n;
 	i = ft_count_for_ten_m(n);

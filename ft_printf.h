@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:11:51 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/28 14:57:43 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/30 14:05:52 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*ft_set_maj(char *str);
 char	*ft_set_d_s_char_prec(t_arg *arg, char **tmp);
 int		ft_set_octal(t_arg *arg);
 int		ft_no_option(t_arg *arg);
-char	*ft_itoa_long(intmax_t c);
+char	*ft_itoa_long(long long int c);
 int		ft_set_digit(t_arg *arg);
 int		ft_set_string(t_arg *arg);
 int		ft_apply(t_arg *arg);

@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 13:18:24 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/25 13:49:00 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/30 14:41:31 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,17 +85,19 @@ int		ft_set_octal(t_arg *arg)
 		tmp = ft_set_d_s_char_prec(arg, &tmp);
 	(arg->width > (int)ft_strlen(tmp)) ? tmp2 = ft_memset(ft_strnew(arg->width - ft_strlen(tmp)), b, arg->width - ft_strlen(tmp)) : 0;
 	(arg->width <= (int)ft_strlen(tmp)) ? tmp2 = "" : 0;
-	if (arg->option[0] == 1)
+	if (arg->option[0] == 1 && (int)arg->arg != 0)
 	{
 		(arg->option[3] == 1 && arg->precision < (int)ft_strlen(tmp)) ? tmp = ft_strjoin("0", tmp) : 0;
 		arg->result = ft_strjoin(tmp, tmp2);
 	}
-	else
+	else if (arg->arg != 0)
 	{
 		(arg->option[3] == 1 && arg->width >= (int)ft_strlen(tmp)) ? tmp2[ft_strlen(tmp2) - 1] = '0' : 0;
 		(arg->option[3] == 1 && arg->width < (int)ft_strlen(tmp)) ? tmp2 = "0" : 0;
 		arg->result = ft_strjoin(tmp2, tmp);
 	}
+	else
+		arg->result = "0";
 	free(tmp);
 	(arg->width >= (int)ft_strlen(tmp))? free(tmp2) : 0;
 	return (0);	

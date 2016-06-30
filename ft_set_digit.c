@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 14:18:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/28 14:43:18 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/30 14:29:28 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ char	*ft_set_d_s_char_prec(t_arg *arg, char **tmp)
 	tmp2 = *tmp;
 	str = (char *)malloc(sizeof(char) * (ft_strlen(tmp2) + arg->precision));
 //	((arg->option[1] == 1 && arg->option[4] == 0 && ft_isdigit(tmp2[0]) != 1) || tmp2[0] == '-') ? str[i++] = '-' : 0;
-	while (i < arg->precision - (int)ft_strlen(tmp2))
+	(arg->precision != -1 && (arg->width > (int)ft_strlen(tmp2) || arg->precision > (int)ft_strlen(tmp2)) && ft_no_option(arg) == 1 && (int)arg->arg < 0) ? str[i++] = '-' : 0;
+	while (i < arg->precision - (int)ft_strlen(tmp2) && arg->arg >= 0)
 	{
 		str[i] = '0';
 		i++;
@@ -112,7 +113,7 @@ void	ft_digit_s_char(t_arg *arg)
 	if (arg->precision != -1 && arg->precision > (int)ft_strlen(tmp))
 	tmp = ft_set_d_s_char_prec(arg, &tmp);
 	(arg->option[1] == 1 && (int)arg->arg > 0 && arg->option[4] == 0) ? tmp = ft_strjoin("+", tmp) : 0;
-	if (arg->option[4] == 1)
+	if (arg->option[4] == 1 && arg->precision == -1)
 	   	b = '0';
 	else
 		b = ' ';
@@ -150,6 +151,11 @@ char	*ft_scotch_d(t_arg *arg)
 
 int		ft_set_digit(t_arg *arg)
 {
+	if ((arg->precision == -2 || arg->precision == 0) && arg->arg == 0)
+	{
+		arg->result = "";
+		return (0);
+	}
 	(arg->option[0] == 1) ? arg->option[4] = 0 : 0;
 	(arg->option[1] == 1) ? arg->option[2] = 0 : 0;
 	(arg->option[4] == 1 && arg->width != -1 && arg->precision != -1 && arg->width > arg->precision && arg->arg == 0) ? arg->result = ft_scotch_d(arg) : 0;

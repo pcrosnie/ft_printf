@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 14:27:38 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/28 14:57:58 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/30 13:44:44 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,17 @@ int		ft_set_other(t_arg *arg)
 {
 	char	*str;
 	int 	i;
+	int		a;
 
 	i = 0;
+	a = 1;
 	str = (char *)malloc(sizeof(char) * (10 + arg->width + arg->precision + ft_strlen(arg->lenght)));
 	if (arg->option[0] == 1)
+	{
 		str[i++] = arg->type;
-	while (i < arg->width - 1)
+		a = 0;
+	}
+	while (i < arg->width - a)
 	{
 		str[i++] = ' ';
 	}

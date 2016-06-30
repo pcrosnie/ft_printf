@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:00:48 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/28 14:57:25 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/30 13:45:37 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ int		ft_retrieve_precision(const char *format, t_arg *arg, int i)
 
 	tmp = (char *)malloc(sizeof(char) * ft_strlen(format));
 	j = 0;
+	if (format[i] == '.' && ft_isdigit(format[i + 1]) == 0)
+	{
+		arg->precision = -2;
+		return (i + 1);
+	}
 	if (format[i] == '.')
 	{
 		i++;
@@ -50,7 +55,7 @@ int		ft_check_format(const char *format, t_arg *arg, t_format *ptr)
 	k = 0;
 	while (format && format[i])
 	{
-		if (format[i] == '%' && format[i + 1] != '%' && format[i - 1] != '%')
+		if (format[i] == '%' && format[i + 1] != '%')
 		{
 			i++;
 			i = ft_retrieve_flags(format, arg, i);
@@ -77,6 +82,7 @@ int		ft_check_format(const char *format, t_arg *arg, t_format *ptr)
 			i++;
 		}
 	}
+	(k != 0) ? ptr->format[j][k] = '\0' : 0;
 	(k == 0) ? ptr->format[j] = NULL : 0;
 	ptr->format[j + 1] = NULL;
 	return (nb);
