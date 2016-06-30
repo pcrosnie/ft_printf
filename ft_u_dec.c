@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 09:48:40 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/30 14:37:29 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/30 17:39:14 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ char    *ft_cast_u(t_arg *arg)
 	char    *str;
 
 	str = NULL;
-	(ft_no_option(arg) == 1) ? str = ft_itoa_long((unsigned int)arg->arg) : 0;
-	(arg->option[5] == 1) ? str = ft_itoa_long((unsigned char)arg->arg) : 0;
-	(arg->option[6] == 1) ? str = ft_itoa_long((unsigned short int)arg->arg) : 0;
-	(arg->option[7] == 1) ? str = ft_itoa_long((unsigned long long int)arg->arg) : 0;
-	(arg->option[8] == 1) ? str = ft_itoa_long((unsigned long int)arg->arg) : 0;
-	(arg->option[9] == 1) ? str = ft_itoa_long((uintmax_t)arg->arg) : 0;
-	(arg->option[10] == 1) ? str = ft_itoa_long((size_t)arg->arg) : 0;
+	(ft_no_option(arg) == 1) ? str = ft_ull_base((unsigned int)arg->arg, 10) : 0;
+	(arg->option[5] == 1) ? str = ft_ull_base((unsigned char)arg->arg, 10) : 0;
+	(arg->option[6] == 1) ? str = ft_ull_base((unsigned short int)arg->arg, 10) : 0;
+	(arg->option[7] == 1) ? str = ft_ull_base((unsigned long long int)arg->arg, 10) : 0;
+	(arg->option[8] == 1) ? str = ft_ull_base((unsigned long int)arg->arg, 10) : 0;
+	(arg->option[9] == 1) ? str = ft_ull_base((uintmax_t)arg->arg, 10) : 0;
+	(arg->option[10] == 1) ? str = ft_ull_base((size_t)arg->arg, 10) : 0;
 	return (str);
 }
 

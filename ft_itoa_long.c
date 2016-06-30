@@ -6,13 +6,13 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 14:39:09 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/30 14:17:11 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/30 17:35:18 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-long int	ft_count_for_ten_m(intmax_t n)
+long int	ft_count_for_ten_m(long long int n)
 {
 	long int	i;
 

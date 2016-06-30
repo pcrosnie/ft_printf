@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:09:27 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/30 14:03:16 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/30 14:51:12 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_s_precision(t_arg *arg)
 		str[i] = tmp[i];
 		i++;
 	}
-	(arg->width == -1) ? arg->result = strdup(str) : 0;
+	(arg->width == -1) ? arg->result = ft_strdup(str) : 0;
 	if (arg->option[0] == 0 && arg->width != -1)
 		arg->result = ft_strjoin(ft_memset(ft_strnew(arg->width - ft_strlen(str)), ' ', arg->width - ft_strlen(str)), str);
 	if (arg->option[0] == 1 && arg->width != -1)

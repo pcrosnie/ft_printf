@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/23 10:57:33 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/23 14:51:19 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/30 17:47:34 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ int		ft_wchar_string(t_arg *arg)
 	wstr = (wchar_t*)arg->arg;
 	str = "";
 	tmp = "";
+	if (arg->arg == NULL)
+	{
+		arg->result = "(null)";
+		return (0);
+	}
 	while (wstr[i])
 	{
 		(wstr[i] <= 127) ? tmp = ft_mask1(wstr[i]) : 0;
@@ -56,11 +61,9 @@ int		ft_wchar_string(t_arg *arg)
 		str = ft_strjoin(str, tmp);
 		i++;
 	}
-	free(tmp);
 	(arg->width >= (int)ft_strlen(str)) ? tmp = ft_memset(ft_strnew(arg->width - ft_strlen(str)), ' ', arg->width - ft_strlen(str)) : 0;
 	(arg->width < (int)ft_strlen(str)) ? tmp = "" : 0;
 	(arg->option[0] == 1) ? arg->result = ft_strjoin(str, tmp) : 0;
 	(arg->option[0] == 0) ? arg->result = ft_strjoin(tmp, str) : 0;
-	free(str);
 	return (0);
 }

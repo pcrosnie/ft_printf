@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 14:39:09 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/28 12:33:08 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/30 17:52:58 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ char		*ft_itoa_base(intmax_t n, int base)
 	uintmax_t		nb;
 	char			*str;
 
-	if (n > 9223372036854775807 || n < -9223372036854775807)
-		return (NULL);
 	j = 1;
 	nb = n;
 	i = ft_count_for_base_m(n, base);
