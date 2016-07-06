@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 13:18:24 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/30 17:23:50 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/07/06 17:05:46 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ char	*ft_cast_o_option(t_arg *arg)
 	char	*str;
 
 	str = NULL;
-	(ft_no_option(arg)) ? str = ft_itoa_base((unsigned int)arg->arg, 8) : 0;
-	(arg->option[5] == 1) ? str = ft_itoa_base((unsigned char)arg->arg, 8) : 0;
-	(arg->option[6] == 1) ? str = ft_itoa_base((unsigned short int)arg->arg, 8) : 0;
-	(arg->option[7] == 1) ? str = ft_itoa_base((unsigned long long int)arg->arg, 8) : 0;
-	(arg->option[8] == 1) ? str = ft_itoa_base((unsigned long int)arg->arg, 8) : 0;
-	(arg->option[9] == 1) ? str = ft_itoa_base((uintmax_t)arg->arg, 8) : 0;
-	(arg->option[10] == 1) ? str = ft_itoa_base((size_t)arg->arg, 8) : 0;
+	(ft_no_option(arg)) ? str = ft_ull_base((unsigned int)arg->arg, 8) : 0;
+	(arg->option[5] == 1) ? str = ft_ull_base((unsigned char)arg->arg, 8) : 0;
+	(arg->option[6] == 1) ? str = ft_ull_base((unsigned short int)arg->arg, 8) : 0;
+	(arg->option[7] == 1) ? str = ft_ull_base((unsigned long long int)arg->arg, 8) : 0;
+	(arg->option[8] == 1) ? str = ft_ull_base((unsigned long int)arg->arg, 8) : 0;
+	(arg->option[9] == 1) ? str = ft_ull_base((uintmax_t)arg->arg, 8) : 0;
+	(arg->option[10] == 1) ? str = ft_ull_base((size_t)arg->arg, 8) : 0;
 	return (str);
 }
 
@@ -75,6 +75,11 @@ int		ft_set_octal(t_arg *arg)
 
 	b = ' ';
 	(arg->option[0] == 1) ? arg->option[4] = 0 : 0;
+	if ((long long)arg->arg == 0 && arg->option[3] == 0 && arg->width == -1 && (arg->precision == 0 || arg->precision == -2))
+	{
+		arg->result = "";
+		return (0);
+	}
 	if (ft_check_o_options(arg) == -1)
 		return (-1);
 	(arg->option[4] == 1 && arg->precision == -1) ? b = '0' : 0;

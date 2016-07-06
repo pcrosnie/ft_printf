@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 10:36:19 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/30 12:21:39 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/07/06 15:48:27 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int		ft_set_adress(t_arg *arg)
 
 	str = NULL;
 	if (!(arg->arg))
-		str = "0x0";
+	{
+		arg->result = "0x";
+		return (0);
+	}
 	else
 		str = ft_itoa_base((intmax_t)arg->arg, 16);
 	(arg->option[0] == 1) ? str = ft_strjoin("0x", str) : 0;

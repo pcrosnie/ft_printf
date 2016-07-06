@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 14:18:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/30 14:29:28 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/07/06 16:17:15 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ char	*ft_set_d_s_char_prec(t_arg *arg, char **tmp)
 	str = (char *)malloc(sizeof(char) * (ft_strlen(tmp2) + arg->precision));
 //	((arg->option[1] == 1 && arg->option[4] == 0 && ft_isdigit(tmp2[0]) != 1) || tmp2[0] == '-') ? str[i++] = '-' : 0;
 	(arg->precision != -1 && (arg->width > (int)ft_strlen(tmp2) || arg->precision > (int)ft_strlen(tmp2)) && ft_no_option(arg) == 1 && (int)arg->arg < 0) ? str[i++] = '-' : 0;
+	((arg->type == 'o' || arg->type == 'O') && arg->width == -1 && arg->option[3] == 1) ? arg->precision-- : 0;
 	while (i < arg->precision - (int)ft_strlen(tmp2) && arg->arg >= 0)
 	{
 		str[i] = '0';
@@ -88,7 +89,7 @@ char	*ft_cast_d(t_arg *arg)
 	char	*str;
 
 	str = NULL;
-	(ft_no_option(arg) == 1) ? str = ft_itoa((int)arg->arg) : 0;
+	(ft_no_option(arg) == 1) ? str = ft_itoa_long((int)arg->arg) : 0;
 	(arg->option[5] == 1) ? str = ft_itoa_long((signed char)arg->arg) : 0;
 	(arg->option[6] == 1) ? str = ft_itoa_long((short int)arg->arg) : 0;
 	(arg->option[7] == 1) ? str = ft_itoa_long((long long int)arg->arg) : 0;
@@ -167,8 +168,8 @@ int		ft_set_digit(t_arg *arg)
 		(arg->option[1] == 1) ? arg->result = "+0" : 0;
 		return (0);
 	}
-	if (ft_check_d_option(arg) == -1)
-		return (-1);
+//	if (ft_check_d_option(arg) == -1)
+//		return (-1);
 	ft_digit_s_char(arg);
 	return (0);
 }

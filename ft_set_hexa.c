@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 15:16:09 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/25 13:45:19 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/07/06 16:44:47 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ char    *ft_cast_x_option(t_arg *arg)
 	char    *str;
 
 	str = NULL;
-	(ft_no_option(arg)) ? str = ft_itoa_base((unsigned int)arg->arg, 16) : 0;
-	(arg->option[5] == 1) ? str = ft_itoa_base((unsigned char)arg->arg, 16) : 0;
-	(arg->option[6] == 1) ? str = ft_itoa_base((unsigned short int)arg->arg, 16) : 0;
-	(arg->option[7] == 1) ? str = ft_itoa_base((unsigned long long int)arg->arg, 16) : 0;
-	(arg->option[8] == 1) ? str = ft_itoa_base((unsigned long int)arg->arg, 16) : 0;
-	(arg->option[9] == 1) ? str = ft_itoa_base((uintmax_t)arg->arg, 16) : 0;
-	(arg->option[10] == 1) ? str = ft_itoa_base((size_t)arg->arg, 16) : 0;
+	(ft_no_option(arg)) ? str = ft_ull_base((unsigned int)arg->arg, 16) : 0;
+	(arg->option[5] == 1) ? str = ft_ull_base((unsigned char)arg->arg, 16) : 0;
+	(arg->option[6] == 1) ? str = ft_ull_base((unsigned short int)arg->arg, 16) : 0;
+	(arg->option[7] == 1) ? str = ft_ull_base((unsigned long long int)arg->arg, 16) : 0;
+	(arg->option[8] == 1) ? str = ft_ull_base((unsigned long int)arg->arg, 16) : 0;
+	(arg->option[9] == 1) ? str = ft_ull_base((uintmax_t)arg->arg, 16) : 0;
+	(arg->option[10] == 1) ? str = ft_ull_base((size_t)arg->arg, 16) : 0;
 	return (str);
 }
 
@@ -43,9 +43,11 @@ int		ft_set_hexa(t_arg *arg)
 	char    b;
 
 	b = ' ';
-	if ((intmax_t)arg->arg == 0)
+	if ((long long int)arg->arg == 0 && arg->width == -1)
 	{
-		arg->result = "0";
+//		arg->result = "0";
+		(arg->precision <= 0 && arg->option[3] == 1) ? arg->result = "" : 0;
+		(arg->precision == -1) ? arg->result = "0" : 0;
 		return (0);
 	}
 	(arg->option[0] == 1) ? arg->option[4] = 0 : 0;

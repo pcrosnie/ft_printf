@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/25 10:41:53 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/30 18:34:20 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/07/06 17:07:46 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int main(void)
 	a = '\0';
 	setlocale(LC_ALL, "");
 
-	ret = printf("%+o", 0);
+	ret = printf("%03c, %lc", L'ÊM-^ZM-^V', L'ÿ≠');
 	ft_putchar('\n');
 	ft_putnbr(ret);
 	ft_putchar('\n');
-	ret = ft_printf("%");
+	ret = ft_printf("%lc, %lc", L'ÊM-^ZM-^V', L'ÿ≠');
 	ft_putchar('\n');
 	ft_putnbr(ret);
 	ft_putchar('\n');
