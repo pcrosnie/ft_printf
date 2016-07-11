@@ -76,8 +76,8 @@ int		ft_check_options(t_arg *arg)
  	(arg->type == 'U') ? ft_set_u_digit(arg) : a++;
  	(arg->type == 'x') ? ft_set_hexa(arg) : a++;
  	(arg->type == 'X') ? ft_set_hexa(arg) : a++;
- 	(arg->type == 'c') ? ft_set_char(arg) : a++;
- 	(arg->type == 'C') ? ft_wchar(arg) : a++;
+ 	(arg->type == 'c' && arg->option[8] == 0) ? ft_set_char(arg) : a++;
+ 	(arg->type == 'C' || (arg->type == 'c' && arg->option[8] == 1)) ? ft_wchar(arg) : a++;
 	(a == 13) ? ft_set_other(arg) : 0;
 	if (a == 13 || ft_check_false_specifier(safe) == -1)
 		return (1);

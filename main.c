@@ -27,11 +27,11 @@ int main(void)
 	a = '\0';
 	setlocale(LC_ALL, "");
 
-	ret = printf("%03c, %lc", L'ÊM-^ZM-^V', L'ÿ≠');
+	ret = printf("{%.2S}", L"42 c est cool");
 	ft_putchar('\n');
 	ft_putnbr(ret);
 	ft_putchar('\n');
-	ret = ft_printf("%lc, %lc", L'ÊM-^ZM-^V', L'ÿ≠');
+	ret = ft_printf("{%.2S}", L"42 c est cool");
 	ft_putchar('\n');
 	ft_putnbr(ret);
 	ft_putchar('\n');
