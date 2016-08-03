@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:00:48 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/07/27 11:44:55 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/03 18:08:14 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,27 @@ int		ft_retrieve_precision(const char *format, t_arg *arg, int i)
 	return (i);
 }
 
+int		ft_fill_format(t_arg *arg, const char *format, int i)
+{
+	i++;
+	i = ft_retrieve_flags(format, arg, i);
+	i = ft_retrieve_width(format, arg, i);
+	i = ft_retrieve_precision(format, arg, i);
+	i = ft_retrieve_lenght(format, arg, i);
+	arg->type = format[i++];
+	arg->next = (t_arg *)malloc(sizeof(t_arg));
+	arg->next->flags = (char *)malloc(sizeof(char) * 10);
+	arg->next->lenght = (char *)malloc(sizeof(char) * 10);
+	return (i);
+}
+
+void	ft_secure_format(int k, int j, t_format *ptr)
+{
+	(k != 0) ? ptr->format[j][k] = '\0' : 0;
+	(k == 0) ? ptr->format[j] = NULL : 0;
+	ptr->format[j + 1] = NULL;
+}
+
 int		ft_check_format(const char *format, t_arg *arg, t_format *ptr)
 {
 	int	i;
@@ -56,18 +77,9 @@ int		ft_check_format(const char *format, t_arg *arg, t_format *ptr)
 	{
 		if (format[i] == '%' && format[i + 1] != '%')
 		{
-			i++;
-			i = ft_retrieve_flags(format, arg, i);
-			i = ft_retrieve_width(format, arg, i);
-			i = ft_retrieve_precision(format, arg, i);
-			i = ft_retrieve_lenght(format, arg, i);
-			arg->type = format[i++];
-			arg->next = (t_arg *)malloc(sizeof(t_arg));
-			arg->next->flags = (char *)malloc(sizeof(char) * 10);
-			arg->next->lenght = (char *)malloc(sizeof(char) * 10);
+			i = ft_fill_format(arg, format, i);
 			arg = arg->next;
-			ptr->format[j][k] = '\0';
-			j++;
+			ptr->format[j++][k] = '\0';
 			if (format[i] != '\0')
 				ptr->format[j] = (char *)malloc(sizeof(ft_strlen(format)));
 			k = 0;
@@ -76,14 +88,10 @@ int		ft_check_format(const char *format, t_arg *arg, t_format *ptr)
 		else
 		{
 			(format[i] == '%' && format[i + 1] == '%') ? i++ : 0;
-			ptr->format[j][k] = format[i];
-			k++;
-			i++;
+			ptr->format[j][k++] = format[i++];
 		}
 	}
-	(k != 0) ? ptr->format[j][k] = '\0' : 0;
-	(k == 0) ? ptr->format[j] = NULL : 0;
-	ptr->format[j + 1] = NULL;
+	ft_secure_format(k, j, ptr);
 	return (nb);
 }
 
@@ -141,9 +149,11 @@ int		ft_c_display(t_arg *arg)
 
 int		ft_display(t_arg *arg, t_format *ptr)
 {
+	t_arg *tmp;
 	int i;
 	int n;
 
+	tmp = arg;
 	i = 0;
 	n = 0;
 	while (ptr->format[i] != NULL)

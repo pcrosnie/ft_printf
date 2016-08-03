@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 14:39:09 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/07/06 15:43:05 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/03 14:58:24 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ long int	ft_count_for_ten_m(long long int n)
 
 char		*ft_itoa_long(long long int n)
 {
-	long int		i;
-	int				j;
+	long int			i;
+	int					j;
 	unsigned long long	nb;
-	char			*str;
+	char				*str;
 
 	j = 1;
 	nb = n;

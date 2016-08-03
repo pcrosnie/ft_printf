@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 14:27:38 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/07/27 13:32:38 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/03 15:09:32 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ int		ft_set_other(t_arg *arg)
 	if (arg->option[0] == 0)
 		str[i++] = arg->type;
 	str[i] = '\0';
-	arg->result = str;
+	arg->result = ft_strdup(str);
+	free(str);
 	return (0);
 }
 

@@ -1,18 +1,17 @@
 Norme: ./ft_itoa_long.c
-Error (line 28): declarations in ft_itoa_long are bad aligned
-Norme: ./ft_mask.c
 Norme: ./ft_printf.h
+Norme: ./ft_mask.c
 Norme: ./ft_apply.c
 Norme: ./ft_set_adress.c
-Norme: ./ft_retrieves_flags_n_width.c
 Norme: ./ft_set_char.c
+Norme: ./ft_retrieves_flags_n_width.c
+Norme: ./ft_set_hexa.c
 Norme: ./ft_set_octal.c
 Error (line 73): function ft_set_octal has 42 lines
 Norme: ./ft_printf.c
-Error: 7 functions in the file
-Error (line 44): function ft_check_format has 42 lines
-Norme: ./ft_set_hexa.c
-Error (line 42): function ft_set_hexa has 43 lines
+Error: 9 functions in the file
+Error (line 65): function ft_check_format has 29 lines
+Error (line 150): declarations in ft_display are bad aligned
 Norme: ./ft_ull_base.c
 Norme: ./ft_u_dec.c
 Error (line 35): function ft_digit has 28 lines
@@ -27,6 +26,8 @@ Error (line 36, col 1): missing space after return
 Error (line 39): declarations in ft_wchar_string are bad aligned
 Error (line 39): function ft_wchar_string has 28 lines
 Error (line 64): line has 137 characters
+Norme: ./ft_set_string.c
+Error (line 15): function ft_set_option has 34 lines
 Norme: ./test.c
 Error: 42 header not at top of the file
 Error (line 6): declarations in main are bad aligned
@@ -217,8 +218,6 @@ Error (line 177): comment not well formatted
 Error (line 177): comment not well placed
 Error (line 179): line has 125 characters
 Error (line 196): Empty line
-Norme: ./ft_set_string.c
-Error (line 15): function ft_set_option has 34 lines
 Norme: ./ft_set_digit.c
 Error: 7 functions in the file
 Error (line 51): function ft_set_d_s_char_prec has 33 lines
