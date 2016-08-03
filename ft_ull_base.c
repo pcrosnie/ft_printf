@@ -6,15 +6,15 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 11:39:12 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/30 17:43:50 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/07/28 14:31:09 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-long int        ft_count_base_m(unsigned long long n, int base)
+long int	ft_count_base_m(unsigned long long n, int base)
 {
-	long int        i;
+	long int	i;
 
 	i = 0;
 	while (n != 0)
@@ -25,7 +25,7 @@ long int        ft_count_base_m(unsigned long long n, int base)
 	return (i);
 }
 
-char    ft_set_bases(int n)
+char		ft_set_bases(int n)
 {
 	char c;
 
@@ -36,7 +36,7 @@ char    ft_set_bases(int n)
 	return (c);
 }
 
-char            *ft_ull_base(unsigned long long n, int base)
+char		*ft_ull_base(unsigned long long n, int base)
 {
 	long int			i;
 	int					j;

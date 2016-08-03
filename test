@@ -1,32 +1,172 @@
+Norme: ./2
+Warning: Not a valid file
+Norme: ./Makefile
+Warning: Not a valid file
+Norme: ./a.out
+Warning: Not a valid file
+Norme: ./auteur
+Warning: Not a valid file
+Norme: ./file
+Warning: Not a valid file
+Norme: ./libft/ft_strmapi.o-7af1e728
+Warning: Not a valid file
+Norme: ./libft/auteur
+Warning: Not a valid file
+Norme: ./libft/Makefile
+Warning: Not a valid file
+Norme: ./libft/libft.a
+Warning: Not a valid file
+Norme: ./libftprintf.a
+Warning: Not a valid file
+Norme: ./printf
+Warning: Not a valid file
+Norme: ./test
+Warning: Not a valid file
 Norme: ./ft_itoa_long.c
 Error (line 28): declarations in ft_itoa_long are bad aligned
-Norme: ./ft_mask.c
-Norme: ./ft_printf.h
 Norme: ./ft_apply.c
-Norme: ./ft_set_adress.c
+Norme: ./ft_printf.h
+Error: global scope bad aligned
+Error (line 16): wrong number of spaces in preprocessor indentation
+Error (line 17): wrong number of spaces in preprocessor indentation
+Error (line 18): wrong number of spaces in preprocessor indentation
+Error (line 20): C++ comment
+Error (line 22): Struct s_arg bad aligned
+Error (line 33): struct and s_arg not separated by a single space.
+Error (line 63, col 42): bad character after ,
+Error (line 64, col 41): bad character after ,
+Norme: ./ft_mask.c
 Norme: ./ft_retrieves_flags_n_width.c
 Norme: ./ft_set_char.c
-Norme: ./ft_set_octal.c
-Error (line 73): function ft_set_octal has 42 lines
+Norme: ./ft_set_adress.c
+Norme: ./ft_set_hexa.c
+Error (line 42): function ft_set_hexa has 43 lines
 Norme: ./ft_printf.c
 Error: 7 functions in the file
 Error (line 44): function ft_check_format has 42 lines
-Norme: ./ft_set_hexa.c
-Error (line 42): function ft_set_hexa has 43 lines
+Norme: ./ft_set_octal.c
+Error (line 73): function ft_set_octal has 42 lines
 Norme: ./ft_ull_base.c
 Norme: ./ft_u_dec.c
-Error (line 35): function ft_digit has 28 lines
-Norme: ./main.c
-Error: file must end with a single empty line
-Error (line 18): declarations in main are bad aligned
-Error (line 18): Space before function name
-Error (line 29): Empty line
+Error: global scope bad aligned
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15, col 4): bad spacing
+Error (line 17, col 5): bad spacing
+Error (line 20): line has 82 characters
+Error (line 22): line has 85 characters
+Error (line 23): line has 89 characters
+Error (line 24): line has 84 characters
+Error (line 30): declarations in ft_digit are bad aligned
+Error (line 30): Space before function name
+Error (line 30): Space before function name
+Error (line 30): Space before function name
+Error (line 30): Space before function name
+Error (line 30): function ft_digit has 27 lines
+Error (line 30, col 4): bad spacing
+Error (line 35, col 4): bad spacing
+Error (line 51): line has 135 characters
+Error (line 58, col 36): missing space around ?
+Error (line 61): Space before function name
+Error (line 61): Space before function name
+Error (line 61): Space before function name
+Error (line 61): Space before function name
+Error (line 61): Space before function name
+Error (line 61): Space before function name
+Error (line 61): Space before function name
+Error (line 61): Space before function name
+Error (line 61): Space before function name
+Error (line 61): Space before function name
+Error (line 61): Space before function name
+Error (line 61): Space before function name
+Error (line 61): Space before function name
+Error (line 61, col 3): bad spacing
+Norme: ./libft/ft_toupper.c
+Norme: ./libft/ft_striteri.c
+Norme: ./libft/ft_strstr.c
+Norme: ./libft/ft_strcpy.c
+Norme: ./libft/ft_strncat.c
+Norme: ./libft/ft_lstadd.c
+Norme: ./libft/ft_putstr_fd.c
 Norme: ./ft_wchar.c
 Error (line 30): line has 135 characters
 Error (line 36, col 1): missing space after return
 Error (line 39): declarations in ft_wchar_string are bad aligned
 Error (line 39): function ft_wchar_string has 28 lines
 Error (line 64): line has 137 characters
+Norme: ./libft/ft_lstiter.c
+Norme: ./libft/ft_isdigit.c
+Norme: ./libft/ft_isupper.c
+Norme: ./libft/ft_strncmp.c
+Norme: ./libft/ft_putnbr.c
+Norme: ./libft/ft_strchr.c
+Norme: ./libft/ft_lstdelone.c
+Norme: ./libft/ft_isalpha.c
+Norme: ./libft/ft_strtrim.c
+Norme: ./libft/ft_print_char_tab.c
+Norme: ./libft/ft_strdel.c
+Norme: ./libft/ft_lstmap.c
+Norme: ./libft/ft_strnew.c
+Norme: ./libft/ft_isalnum.c
+Norme: ./libft/ft_strsplit.c
+Norme: ./libft/ft_strequ.c
+Norme: ./ft_set_string.c
+Error (line 15): function ft_set_option has 34 lines
+Norme: ./libft/ft_putnbr_fd.c
+Norme: ./libft/ft_putstr.c
+Norme: ./libft/ft_memmove.c
+Norme: ./libft/ft_strnstr.c
+Norme: ./libft/ft_strsub.c
+Norme: ./libft/ft_lstnew.c
+Norme: ./libft/ft_putchar.c
+Norme: ./libft/ft_isascii.c
+Norme: ./libft/ft_strrchr.c
+Norme: ./libft/ft_atoi.c
+Norme: ./ft_set_digit.c
+Error: 7 functions in the file
+Error (line 51): function ft_set_d_s_char_prec has 33 lines
+Error (line 103): function ft_digit_s_char has 38 lines
+Norme: ./libft/ft_strmapi.c
+Norme: ./libft/ft_memccpy.c
+Norme: ./libft/ft_strlen.c
+Norme: ./libft/ft_itoa.c
+Norme: ./libft/ft_lstdel.c
+Norme: ./libft/ft_strjoin.c
+Norme: ./libft/ft_memchr.c
+Norme: ./libft/ft_strmap.c
+Norme: ./libft/ft_strrev.c
+Norme: ./libft/ft_strclr.c
+Norme: ./libft/ft_striter.c
+Norme: ./libft/ft_itoa_base.c
+Error: global scope bad aligned
+Norme: ./libft/ft_memcpy.c
+Norme: ./libft/ft_strncpy.c
+Norme: ./libft/ft_strcat.c
+Norme: ./libft/ft_putchar_fd.c
+Norme: ./libft/ft_memalloc.c
+Norme: ./libft/ft_strnequ.c
+Norme: ./libft/ft_power.c
+Norme: ./libft/ft_memset.c
+Norme: ./libft/ft_bzero.c
+Norme: ./libft/ft_strcmp.c
+Norme: ./libft/ft_isprint.c
+Norme: ./libft/ft_fact.c
+Norme: ./libft/ft_memcmp.c
+Norme: ./libft/ft_memdel.c
+Norme: ./libft/ft_putendl_fd.c
+Norme: ./libft/ft_tolower.c
+Norme: ./libft/ft_islower.c
+Norme: ./libft/ft_putendl.c
+Norme: ./libft/ft_strlcat.c
+Norme: ./libft/libft.h
+Norme: ./libft/ft_strdup.c
+Norme: ./main.c
+Error: file must end with a single empty line
+Error (line 18): declarations in main are bad aligned
+Error (line 18): Space before function name
+Error (line 29): Empty line
 Norme: ./test.c
 Error: 42 header not at top of the file
 Error (line 6): declarations in main are bad aligned
@@ -217,12 +357,6 @@ Error (line 177): comment not well formatted
 Error (line 177): comment not well placed
 Error (line 179): line has 125 characters
 Error (line 196): Empty line
-Norme: ./ft_set_string.c
-Error (line 15): function ft_set_option has 34 lines
-Norme: ./ft_set_digit.c
-Error: 7 functions in the file
-Error (line 51): function ft_set_d_s_char_prec has 33 lines
-Error (line 103): function ft_digit_s_char has 38 lines
 Norme: ./main2.c
 Error: 42 header not at top of the file
 Error (line 6): declarations in main are bad aligned
