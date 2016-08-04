@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 15:16:09 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/03 17:12:18 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/04 11:30:15 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int		ft_set_hexa(t_arg *arg)
 	(arg->option[4] == 1 && arg->precision == -1) ? b = '0' : 0;
 	tmp = ft_cast_x_option(arg);
 	if (arg->precision != -1 && arg->precision > (int)ft_strlen(tmp))
-		tmp = ft_set_d_s_char_prec(arg, &tmp);
+		tmp = ft_set_d_s_char_prec(arg, &tmp, 0);
 	(arg->width >= (int)ft_strlen(tmp)) ? tmp2 = ft_memset(ft_strnew(arg->width
 		- ft_strlen(tmp)), b, arg->width - ft_strlen(tmp)) : 0;
 	(arg->width < (int)ft_strlen(tmp)) ? tmp2 = "" : 0;

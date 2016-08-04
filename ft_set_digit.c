@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 14:18:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/07/28 11:13:29 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/04 11:41:03 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,12 @@ char	*ft_set_sign(char *tmp, long long int c, int a)
 		return (ft_strjoin("-", tmp));
 }
 
-char	*ft_set_d_s_char_prec(t_arg *arg, char **tmp)
+char	*ft_set_d_s_char_prec(t_arg *arg, char **tmp, int i)
 {
 	char	*str;
 	char	*tmp2;
-	int		i;
 	int		j;
 
-	i = 0;
 	j = 0;
 	tmp2 = *tmp;
 	str = (char *)malloc(sizeof(char) * (ft_strlen(tmp2) + arg->precision));
@@ -65,10 +63,7 @@ char	*ft_set_d_s_char_prec(t_arg *arg, char **tmp)
 	((arg->type == 'o' || arg->type == 'O') && arg->width == -1
 	&& arg->option[3] == 1) ? arg->precision-- : 0;
 	while (i < arg->precision - (int)ft_strlen(tmp2) && arg->arg >= 0)
-	{
-		str[i] = '0';
-		i++;
-	}
+		str[i++] = '0';
 	if (tmp2[j] == '-')
 	{
 		j++;
@@ -76,11 +71,7 @@ char	*ft_set_d_s_char_prec(t_arg *arg, char **tmp)
 		str[i++] = '0';
 	}
 	while (j < (int)ft_strlen(tmp2))
-	{
-		str[i] = tmp2[j];
-		i++;
-		j++;
-	}
+		str[i++] = tmp2[j++];
 	str[i] = '\0';
 	return (str);
 }
@@ -100,30 +91,8 @@ char	*ft_cast_d(t_arg *arg)
 	return (str);
 }
 
-void	ft_digit_s_char(t_arg *arg)
+void	ft_digit_options(t_arg *arg, char *tmp, char *tmp2, char b)
 {
-	char	*tmp;
-	char	*tmp2;
-	char	b;
-	int		a;
-
-	a = 0;
-	tmp = ft_cast_d(arg);
-	(tmp == NULL) ? tmp = "\0" : 0;
-	(tmp[0] == '-') ? a = 1 : 0;
-	tmp2 = (char *)malloc(sizeof(char) * (arg->width + ft_strlen(tmp) + 5));
-	if (arg->precision != -1 && arg->precision > (int)ft_strlen(tmp))
-		tmp = ft_set_d_s_char_prec(arg, &tmp);
-	(arg->option[1] == 1 && (int)arg->arg > 0 &&
-	arg->option[4] == 0) ? tmp = ft_strjoin("+", tmp) : 0;
-	if (arg->option[4] == 1 && arg->precision == -1)
-		b = '0';
-	else
-		b = ' ';
-	if (arg->option[2] == 1 && a == 0)
-	{
-		tmp = ft_strjoin(" ", tmp);
-	}
 	(arg->width >= (int)ft_strlen(tmp)) ? tmp2 = ft_memset(ft_strnew(arg->width
 				- ft_strlen(tmp)), b, arg->width - ft_strlen(tmp)) : 0;
 	(arg->width < (int)ft_strlen(tmp)) ? tmp2 = "" : 0;
@@ -140,6 +109,31 @@ void	ft_digit_s_char(t_arg *arg)
 	((int)arg->arg < 0 && arg->option[4] == 1) ? arg->result[arg->width -
 		ft_strlen(tmp)] = '0' : 0;
 	(arg->width >= (int)ft_strlen(tmp)) ? free(tmp2) : 0;
+}
+
+void	ft_digit_s_char(t_arg *arg)
+{
+	char	*tmp;
+	char	*tmp2;
+	char	b;
+	int		a;
+
+	a = 0;
+	tmp = ft_cast_d(arg);
+	(tmp == NULL) ? tmp = "\0" : 0;
+	(tmp[0] == '-') ? a = 1 : 0;
+	tmp2 = (char *)malloc(sizeof(char) * (arg->width + ft_strlen(tmp) + 5));
+	if (arg->precision != -1 && arg->precision > (int)ft_strlen(tmp))
+		tmp = ft_set_d_s_char_prec(arg, &tmp, 0);
+	(arg->option[1] == 1 && (int)arg->arg > 0 &&
+	arg->option[4] == 0) ? tmp = ft_strjoin("+", tmp) : 0;
+	if (arg->option[4] == 1 && arg->precision == -1)
+		b = '0';
+	else
+		b = ' ';
+	if (arg->option[2] == 1 && a == 0)
+		tmp = ft_strjoin(" ", tmp);
+	ft_digit_options(arg, tmp, tmp2, b);
 }
 
 char	*ft_scotch_d(t_arg *arg)

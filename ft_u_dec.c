@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/24 09:48:40 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/07/28 14:48:53 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/04 11:29:56 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,13 @@ void	ft_digit(t_arg *arg)
 	(tmp[0] == '-') ? a = 1 : 0;
 	tmp2 = (char *)malloc(sizeof(char) * (arg->width + ft_strlen(tmp) + 5));
 	if (arg->precision != -1 && arg->precision > (int)ft_strlen(tmp))
-		tmp = ft_set_d_s_char_prec(arg, &tmp);
+		tmp = ft_set_d_s_char_prec(arg, &tmp, 0);
 	if (arg->option[4] == 1)
 		b = '0';
 	else
 		b = ' ';
 	if (arg->option[2] == 1 && a == 0)
-	{
 		tmp = ft_strjoin(" ", tmp);
-	}
 	(arg->width > (int)ft_strlen(tmp)) ? tmp2 = ft_memset(ft_strnew(arg->width
 			- ft_strlen(tmp)), b, arg->width - ft_strlen(tmp)) : 0;
 	(arg->width < (int)ft_strlen(tmp)) ? tmp2 = "" : 0;
@@ -60,7 +58,6 @@ void	ft_digit(t_arg *arg)
 		arg->result = ft_strjoin(tmp, tmp2);
 	else
 		arg->result = ft_strjoin(tmp2, tmp);
-	free(tmp);
 	(arg->width >= (int)ft_strlen(tmp)) ? free(tmp2) : 0;
 }
 

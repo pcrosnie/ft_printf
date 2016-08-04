@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 13:18:24 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/07/28 11:25:21 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/04 11:29:35 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,28 +70,10 @@ char	*ft_set_maj(char *str)
 	return (str);
 }
 
-int		ft_set_octal(t_arg *arg)
+void	ft_set_octal_options(t_arg *arg, char *tmp, char *tmp2, char b)
 {
-	char	*tmp;
-	char	*tmp2;
-	char	b;
-
-	b = ' ';
-	(arg->option[0] == 1) ? arg->option[4] = 0 : 0;
-	if ((long long)arg->arg == 0 && arg->option[3] == 0 &&
-	arg->width == -1 && (arg->precision == 0 || arg->precision == -2))
-	{
-		arg->result = "";
-		return (0);
-	}
-	if (ft_check_o_options(arg) == -1)
-		return (-1);
-	(arg->option[4] == 1 && arg->precision == -1) ? b = '0' : 0;
-	(arg->type == 'O') ? arg->option[8] = 1 : 0;
-	(arg->option[0] == 1 && arg->option[3] == 1) ? arg->width-- : 0;
-	tmp = ft_cast_o_option(arg);
 	if (arg->precision != -1 && arg->precision > (int)ft_strlen(tmp))
-		tmp = ft_set_d_s_char_prec(arg, &tmp);
+		tmp = ft_set_d_s_char_prec(arg, &tmp, 0);
 	(arg->width > (int)ft_strlen(tmp)) ? tmp2 = ft_memset(ft_strnew(arg->width
 	- ft_strlen(tmp)), b, arg->width - ft_strlen(tmp)) : 0;
 	(arg->width <= (int)ft_strlen(tmp)) ? tmp2 = "" : 0;
@@ -111,6 +93,30 @@ int		ft_set_octal(t_arg *arg)
 	}
 	else
 		arg->result = "0";
+}
+
+int		ft_set_octal(t_arg *arg)
+{
+	char	*tmp;
+	char	*tmp2;
+	char	b;
+
+	b = ' ';
+	tmp2 = NULL;
+	(arg->option[0] == 1) ? arg->option[4] = 0 : 0;
+	if ((long long)arg->arg == 0 && arg->option[3] == 0 &&
+	arg->width == -1 && (arg->precision == 0 || arg->precision == -2))
+	{
+		arg->result = "";
+		return (0);
+	}
+	if (ft_check_o_options(arg) == -1)
+		return (-1);
+	(arg->option[4] == 1 && arg->precision == -1) ? b = '0' : 0;
+	(arg->type == 'O') ? arg->option[8] = 1 : 0;
+	(arg->option[0] == 1 && arg->option[3] == 1) ? arg->width-- : 0;
+	tmp = ft_cast_o_option(arg);
+	ft_set_octal_options(arg, tmp, tmp2, b);
 	free(tmp);
 	(arg->width >= (int)ft_strlen(tmp)) ? free(tmp2) : 0;
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/10 14:11:51 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/03 13:51:33 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/04 11:30:33 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char			*ft_mask4(wchar_t n);
 int				ft_wchar(t_arg *arg);
 int				ft_set_hexa(t_arg *arg);
 char			*ft_set_maj(char *str);
-char			*ft_set_d_s_char_prec(t_arg *arg, char **tmp);
+char			*ft_set_d_s_char_prec(t_arg *arg, char **tmp, int i);
 int				ft_set_octal(t_arg *arg);
 int				ft_no_option(t_arg *arg);
 char			*ft_itoa_long(long long int c);
