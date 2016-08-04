@@ -6,7 +6,7 @@
 #    By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/24 13:16:13 by pcrosnie          #+#    #+#              #
-#    Updated: 2016/06/30 17:29:53 by pcrosnie         ###   ########.fr        #
+#    Updated: 2016/08/04 13:03:16 by pcrosnie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libftprintf.a
 
 LIB = libft/libft.a
 
-SRC = ft_apply.c ft_mask.c ft_wchar.c ft_itoa_long.c ft_printf.c ft_retrieves_flags_n_width.c ft_set_digit.c ft_set_string.c ft_set_octal.c ft_set_hexa.c ft_set_char.c ft_u_dec.c ft_set_adress.c ft_ull_base.c
+SRC = ft_apply.c ft_mask.c ft_wchar.c ft_itoa_long.c ft_printf.c ft_retrieves_flags_n_width.c ft_set_digit.c ft_set_string.c ft_set_octal.c ft_set_hexa.c ft_set_char.c ft_u_dec.c ft_set_adress.c ft_ull_base.c ft_no_option.c ft_set.c
 
 SRCO = $(SRC:.c=.o)
 	FLAG = -Wall -Werror -Wextra

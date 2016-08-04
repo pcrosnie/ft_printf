@@ -6,28 +6,11 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 13:18:24 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/04 11:29:35 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/04 12:49:37 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int		ft_no_option(t_arg *arg)
-{
-	int i;
-	int a;
-
-	i = 5;
-	a = 0;
-	while (i < 11)
-	{
-		(arg->option[i] == 1) ? a++ : 0;
-		i++;
-	}
-	if (a == 0)
-		return (1);
-	return (0);
-}
 
 int		ft_check_o_options(t_arg *arg)
 {

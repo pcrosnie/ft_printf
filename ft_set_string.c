@@ -6,11 +6,19 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:09:27 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/07/28 11:43:56 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/04 13:02:16 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	ft_check_casthl(t_arg *arg, int h, int l)
+{
+	(h % 2 == 1 && h != 0) ? arg->option[6] = 1 : 0;
+	(h % 2 == 0 && h != 0) ? arg->option[5] = 1 : 0;
+	(l % 2 == 1 && l != 0) ? arg->option[8] = 1 : 0;
+	(l % 2 == 0 && l != 0) ? arg->option[7] = 1 : 0;
+}
 
 int		ft_set_option(t_arg *arg)
 {
@@ -26,16 +34,9 @@ int		ft_set_option(t_arg *arg)
 	arg->option = ft_memset(arg->option, 0, 11);
 	while (arg->flags[i] || arg->lenght[i])
 	{
-		a = 0;
-		(arg->flags[i] == '-') ? arg->option[0] = 1 : a++;
-		(arg->flags[i] == '+') ? arg->option[1] = 1 : a++;
-		(arg->flags[i] == ' ') ? arg->option[2] = 1 : a++;
-		(arg->flags[i] == '#') ? arg->option[3] = 1 : a++;
-		(arg->flags[i] == '0') ? arg->option[4] = 1 : a++;
+		a = ft_set_in_options(arg, i);
 		(arg->lenght[i] == 'h') ? h++ : a++;
 		(arg->lenght[i] == 'l') ? l++ : a++;
-		(arg->lenght[i] == 'j') ? arg->option[9] = 1 : a++;
-		(arg->lenght[i] == 'z') ? arg->option[10] = 1 : a++;
 		if (a == 11)
 		{
 			ft_putstr("error");
@@ -43,10 +44,7 @@ int		ft_set_option(t_arg *arg)
 		}
 		i++;
 	}
-	(h % 2 == 1 && h != 0) ? arg->option[6] = 1 : 0;
-	(h % 2 == 0 && h != 0) ? arg->option[5] = 1 : 0;
-	(l % 2 == 1 && l != 0) ? arg->option[8] = 1 : 0;
-	(l % 2 == 0 && l != 0) ? arg->option[7] = 1 : 0;
+	ft_check_casthl(arg, h, l);
 	return (0);
 }
 
