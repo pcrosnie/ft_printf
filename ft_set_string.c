@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:09:27 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/11 13:23:29 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/11 13:53:21 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,10 @@ void	ft_s_precision(t_arg *arg)
 	char	*tmp;
 
 	i = 0;
+//	ft_putstr("HERE\n");
 	str = (char *)malloc(sizeof(char) * ft_strlen((char *)arg->arg) + arg->precision);
 	tmp = (char *)arg->arg;
-	while (i < arg->precision && tmp[i])
+	while (i < arg->precision && i < (int)ft_strlen((char *)arg->arg))
 	{
 		str[i] = tmp[i];
 		i++;
@@ -82,9 +83,11 @@ void	ft_s_precision(t_arg *arg)
 		arg->width >= (int)ft_strlen(str))
 		arg->result = ft_strjoin(ft_memset(ft_strnew(arg->width
 	- ft_strlen(str)), ' ', arg->width - ft_strlen(str)), str);
-	if (arg->option[0] == 1 && arg->width != -1)
+//	ft_putstr("IN\n");
+	if (arg->option[0] == 1 && arg->width != -1 && arg->width > (int)ft_strlen(str))
 		arg->result = ft_strjoin(str, ft_memset(ft_strnew(arg->width
 	- ft_strlen(str)), ' ', arg->width - ft_strlen(str)));
+//	ft_putstr("OUT\n");
 }
 
 int		ft_set_string(t_arg *arg)
