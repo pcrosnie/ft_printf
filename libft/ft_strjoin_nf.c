@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin_nf.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 16:09:21 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/11 13:31:24 by pcrosnie         ###   ########.fr       */
+/*   Created: 2016/08/11 13:31:08 by pcrosnie          #+#    #+#             */
+/*   Updated: 2016/08/11 13:33:31 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char    *ft_strjoin_nf(char *s1, char *s2, int nb)
 {
-	char	*str;
-	size_t	i;
-	size_t	j;
+	char    *str;
+	size_t  i;
+	size_t  j;
 
 	i = 0;
 	j = 0;
@@ -34,6 +34,13 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		while (s2[j])
 			str[i++] = s2[j++];
 		str[i] = '\0';
+	}
+	(nb == 1) ? free(s1) : 0;
+	(nb == 2) ? free(s2) : 0;
+	if (nb == 3)
+	{
+		free(s1);
+		free(s2);
 	}
 	return (str);
 }
