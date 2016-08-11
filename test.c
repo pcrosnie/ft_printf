@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/27 16:09:21 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/11 10:58:23 by pcrosnie         ###   ########.fr       */
+/*   Created: 2016/08/10 15:05:39 by pcrosnie          #+#    #+#             */
+/*   Updated: 2016/08/11 11:43:46 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
+#include <stdio.h>
 
-char	*ft_strjoin(const char *s1, const char *s2)
+#define D "%d"
+
+int		main(void)
 {
-	char	*str;
-	size_t	i;
-	size_t	j;
 
-	i = 0;
-	j = 0;
-	str = NULL;
-	if (s1 && s2)
-	{
-		str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 2));
-		if (!str)
-			return (NULL);
-		while (s1[i] && i < ft_strlen(s1))
-		{
-			str[i] = s1[i];
-			i++;
-		}
-		while (s2[j])
-			str[i++] = s2[j++];
-		str[i] = '\0';
-	}
-	return (str);
+	printf("%1.2s", "arg");
+	ft_printf("%1.2s", "arg");
+	return (0);
 }

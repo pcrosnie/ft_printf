@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 14:39:09 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/30 17:52:58 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/09 11:08:29 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ long int	ft_count_for_base_m(intmax_t n, int base)
 	return (i);
 }
 
-char	ft_set_base(int n)
+char		ft_set_base(int n)
 {
 	char c;
 

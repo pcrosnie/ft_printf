@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 13:27:01 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/06/24 10:15:04 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/11 11:06:39 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int					ft_strequ(const char *s1, const char *s2);
 
 float				ft_power(float nb, int power);
 
+char				*ft_strjoin_nf(char *s1, char *s2, int nb);
 char				*ft_itoa_base(intmax_t n, int base);
 char				*ft_strdup(const char *str);
 char				*ft_strsub(const char *s, unsigned int start, size_t len);
