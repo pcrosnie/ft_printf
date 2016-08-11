@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/09 15:19:33 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/11 11:44:24 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/11 12:13:07 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(void)
 				str = ft_strjoin_nf(ft_strdup(str), ft_itoa(width), 3);
 				str = ft_strjoin_nf(ft_strdup(str), ".", 1);
 				str = ft_strjoin_nf(ft_strdup(str), ft_itoa(precision), 3);
-				str = ft_strjoin_nf(ft_strdup(str), "s", 1);
+				str = ft_strjoin_nf(ft_strdup(str), "p", 1);
 				printf(str, arg);
 				ft_putchar('\n');
 				ft_printf(str, arg);
