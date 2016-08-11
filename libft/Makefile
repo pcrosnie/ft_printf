@@ -6,13 +6,12 @@
 #    By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 17:07:03 by pcrosnie          #+#    #+#              #
-#    Updated: 2016/08/11 11:05:36 by pcrosnie         ###   ########.fr        #
+#    Updated: 2016/06/22 11:46:07 by pcrosnie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 SRC += ft_atoi.c
-SRC += ft_strjoin_nf.c
 SRC += ft_strsplit.c
 SRC += ft_itoa.c
 SRC += ft_power.c

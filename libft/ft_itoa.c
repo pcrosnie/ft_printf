@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 14:39:09 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/11 10:59:44 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/06/30 14:04:03 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char		*ft_itoa(int n)
 	j = 1;
 	nb = n;
 	i = ft_count_for_ten_m(n);
-	str = (char *)ft_memalloc(i + 4);
+	str = (char *)ft_memalloc(i + 3);
 	if (n == 0)
 		str[0] = '0';
 	if (n < 0)
