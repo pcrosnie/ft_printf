@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/09 15:19:33 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/13 11:56:57 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/13 16:14:11 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int	main(void)
 //				ft_putstr(str);
 //				ft_putchar('\n');
 //				ft_putstr("printf :");*/
-//				printf(str, -1);
+//				printf(str, 0);
 //				ft_putstr("ft_printf :");
-				ft_printf(str, -1);
+				ft_printf(str, 0);
 				free(str);
 			width++;
 		}

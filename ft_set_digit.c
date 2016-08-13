@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 14:18:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/13 14:22:04 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/13 15:58:36 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,14 @@ char	*ft_set_zero(t_arg *arg, char *tmp)
 		i++;
 	}
 	k = i;
+	if ((arg->option[4] == 1 && arg->option[1] == 0) || (arg->option[4] == 1 && arg->option[2] == 0) || arg->option[0] == 1 || (arg->option[1] == 1 && arg->option[4] == 0) || (arg->option[2] == 1 && arg->option[4] == 0))
+	{
 	while (j < arg->precision - 1)
 	{
 		str[i] = '0';
 		i++;
 		j++;
+	}
 	}
 	while (tmp[k])
 	{
@@ -70,6 +73,7 @@ void	ft_debug(char *tmp, char *tmp2)
 
 void	ft_digit_options(t_arg *arg, char *tmp, char *tmp2, char b)
 {
+	((int)arg->arg > 0 && arg->option[4] == 1 && arg->option[1] == 1 && arg->precision == -1 && arg->width >= (int)ft_strlen(tmp)) ?arg->width-- : 0; 
 	((arg->option[0] == 1 || arg->option[1] == 1 || arg->option[4] == 1 || arg->option[2] == 1) && (int)arg->arg < 0 && arg->precision == 2) ? tmp = ft_set_zero(arg, tmp) : 0;
 	(arg->width >= (int)ft_strlen(tmp)) ? tmp2 = ft_memset(ft_strnew(arg->width
 				- ft_strlen(tmp)), b, arg->width - ft_strlen(tmp)) : 0;
@@ -77,15 +81,16 @@ void	ft_digit_options(t_arg *arg, char *tmp, char *tmp2, char b)
 	(ft_no_option(arg) == 1 && arg->width > arg->precision &&
 	arg->precision != -1 && arg->width != -1 &&
 	arg->arg < 0) ? tmp[0] = '-' : 0;
-//	ft_debug(tmp,tmp2);
 	if (arg->option[0] == 1)
 		arg->result = ft_strjoin(tmp, tmp2);
 	else
 		arg->result = ft_strjoin(tmp2, tmp);
 	(arg->option[1] == 1 && (int)arg->arg > 0 && arg->option[4] == 1) ?
 		arg->result = ft_strjoin_nf("+", arg->result, 2) : 0;
+	((int)arg->arg > 0 && arg->option[4] == 1 && arg->option[2] == 1 && arg->precision < 0 && arg->width > (int)ft_strlen(tmp)) ? arg->result[arg->width - ft_strlen(tmp)] = '0' : 0;
+	((int)arg->arg > 0 && arg->option[4] == 1 && arg->option[2] == 1 && arg->precision < 0 && arg->width > (int)ft_strlen(tmp)) ? arg->result[0] = ' ' : 0;
 	((int)arg->arg < 0 && arg->option[4] == 1 && (arg->precision > arg->width || arg->precision < 0)) ? arg->result[0] = '-' : 0;
-	((int)arg->arg < 0 && arg->option[4] == 1 && arg->width > (int)ft_strlen(tmp) && (arg->precision > arg->width || arg->precision < 0)) ? 	arg->result[arg->width - ft_strlen(tmp)] = '0' : 0;
+	((int)arg->arg < 0 && arg->option[4] == 1 && arg->width > (int)ft_strlen(tmp) && (arg->precision > arg->width || arg->precision < 0)) ? arg->result[arg->width - ft_strlen(tmp)] = '0' : 0;
 	(arg->width >= (int)ft_strlen(tmp)) ? free(tmp2) : 0;
 }
 
