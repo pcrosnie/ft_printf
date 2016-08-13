@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 14:18:44 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/08/12 14:05:33 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2016/08/13 14:22:04 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,65 @@ char	*ft_cast_d(t_arg *arg)
 	return (str);
 }
 
+char	*ft_set_zero(t_arg *arg, char *tmp)
+{
+	int i;
+	int j;
+	char *str;
+	int k;
+
+	i = 0;
+	j = 0;
+	str = (char *)ft_memalloc(sizeof(char) * (ft_strlen(tmp) + arg->precision));
+	while (ft_isdigit(tmp[i]) == 0)
+	{
+		str[i] = tmp[i];
+		i++;
+	}
+	k = i;
+	while (j < arg->precision - 1)
+	{
+		str[i] = '0';
+		i++;
+		j++;
+	}
+	while (tmp[k])
+	{
+		str[i] = tmp[k];
+		i++;
+		k++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+void	ft_debug(char *tmp, char *tmp2)
+{
+	ft_putstr("tmp :");
+	ft_putstr(tmp);
+	ft_putstr("tmp2 :");
+	ft_putstr(tmp2);
+	ft_putchar('\n');
+}
+
 void	ft_digit_options(t_arg *arg, char *tmp, char *tmp2, char b)
 {
+	((arg->option[0] == 1 || arg->option[1] == 1 || arg->option[4] == 1 || arg->option[2] == 1) && (int)arg->arg < 0 && arg->precision == 2) ? tmp = ft_set_zero(arg, tmp) : 0;
 	(arg->width >= (int)ft_strlen(tmp)) ? tmp2 = ft_memset(ft_strnew(arg->width
 				- ft_strlen(tmp)), b, arg->width - ft_strlen(tmp)) : 0;
 	(arg->width < (int)ft_strlen(tmp)) ? tmp2 = "" : 0;
 	(ft_no_option(arg) == 1 && arg->width > arg->precision &&
 	arg->precision != -1 && arg->width != -1 &&
 	arg->arg < 0) ? tmp[0] = '-' : 0;
+//	ft_debug(tmp,tmp2);
 	if (arg->option[0] == 1)
 		arg->result = ft_strjoin(tmp, tmp2);
 	else
 		arg->result = ft_strjoin(tmp2, tmp);
 	(arg->option[1] == 1 && (int)arg->arg > 0 && arg->option[4] == 1) ?
-		arg->result[0] = '+' : 0;
-	((int)arg->arg < 0 && arg->option[4] == 1) ? arg->result[0] = '-' : 0;
-	((int)arg->arg < 0 && arg->option[4] == 1 && arg->width > (int)ft_strlen(tmp)) ? 		arg->result[arg->width - ft_strlen(tmp)] = '0' : 0;
+		arg->result = ft_strjoin_nf("+", arg->result, 2) : 0;
+	((int)arg->arg < 0 && arg->option[4] == 1 && (arg->precision > arg->width || arg->precision < 0)) ? arg->result[0] = '-' : 0;
+	((int)arg->arg < 0 && arg->option[4] == 1 && arg->width > (int)ft_strlen(tmp) && (arg->precision > arg->width || arg->precision < 0)) ? 	arg->result[arg->width - ft_strlen(tmp)] = '0' : 0;
 	(arg->width >= (int)ft_strlen(tmp)) ? free(tmp2) : 0;
 }
 
